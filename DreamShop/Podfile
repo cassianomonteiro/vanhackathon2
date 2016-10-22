@@ -8,6 +8,7 @@ target 'DreamShop' do
   # Pods for DreamShop
   pod 'FontAwesomeIconFactory'
   pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Twitter'
   pod 'Firebase/Crash'
   pod 'MagicalRecord'
   pod 'RestKit'

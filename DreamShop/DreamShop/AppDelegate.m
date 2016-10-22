@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Firebase.h>
+#import <FirebaseAuthUI/FirebaseAuthUI.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [FIRApp configure];
     return YES;
 }
 
@@ -49,6 +53,11 @@
     [self saveContext];
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    NSString *sourceApplication = options[UIApplicationOpenURLOptionsSourceApplicationKey];
+    return [[FIRAuthUI defaultAuthUI] handleOpenURL:url sourceApplication:sourceApplication];
+}
 
 #pragma mark - Core Data stack
 

@@ -11,13 +11,13 @@
 		EB3679A45090F3BD65669554 /* libPods-DreamShopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */; };
 		F0B9734D1DBAF3350066632C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9734C1DBAF3350066632C /* main.m */; };
 		F0B973501DBAF3350066632C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9734F1DBAF3350066632C /* AppDelegate.m */; };
-		F0B973531DBAF3350066632C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973521DBAF3350066632C /* ViewController.m */; };
 		F0B973561DBAF3350066632C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B973541DBAF3350066632C /* Main.storyboard */; };
 		F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0B973571DBAF3350066632C /* DreamShop.xcdatamodeld */; };
 		F0B9735B1DBAF3350066632C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B9735A1DBAF3350066632C /* Assets.xcassets */; };
 		F0B9735E1DBAF3350066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B9735C1DBAF3350066632C /* LaunchScreen.storyboard */; };
 		F0B973691DBAF3350066632C /* DreamShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973681DBAF3350066632C /* DreamShopTests.m */; };
 		F0B973741DBAF4100066632C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B973731DBAF4100066632C /* GoogleService-Info.plist */; };
+		F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973771DBAF6E80066632C /* NewsFeedVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,6 @@
 		F0B9734C1DBAF3350066632C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0B9734E1DBAF3350066632C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B9734F1DBAF3350066632C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F0B973511DBAF3350066632C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F0B973521DBAF3350066632C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F0B973551DBAF3350066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0B973581DBAF3350066632C /* DreamShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamShop.xcdatamodel; sourceTree = "<group>"; };
 		F0B9735A1DBAF3350066632C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +49,8 @@
 		F0B973681DBAF3350066632C /* DreamShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamShopTests.m; sourceTree = "<group>"; };
 		F0B9736A1DBAF3350066632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0B973731DBAF4100066632C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0B973761DBAF6E80066632C /* NewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedVC.h; sourceTree = "<group>"; };
+		F0B973771DBAF6E80066632C /* NewsFeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedVC.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,10 +117,9 @@
 		F0B9734A1DBAF3350066632C /* DreamShop */ = {
 			isa = PBXGroup;
 			children = (
+				F0B973751DBAF6C10066632C /* View */,
 				F0B9734E1DBAF3350066632C /* AppDelegate.h */,
 				F0B9734F1DBAF3350066632C /* AppDelegate.m */,
-				F0B973511DBAF3350066632C /* ViewController.h */,
-				F0B973521DBAF3350066632C /* ViewController.m */,
 				F0B973541DBAF3350066632C /* Main.storyboard */,
 				F0B9735A1DBAF3350066632C /* Assets.xcassets */,
 				F0B9735C1DBAF3350066632C /* LaunchScreen.storyboard */,
@@ -147,6 +146,15 @@
 				F0B9736A1DBAF3350066632C /* Info.plist */,
 			);
 			path = DreamShopTests;
+			sourceTree = "<group>";
+		};
+		F0B973751DBAF6C10066632C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F0B973761DBAF6E80066632C /* NewsFeedVC.h */,
+				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,9 +361,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0B973531DBAF3350066632C /* ViewController.m in Sources */,
 				F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */,
 				F0B973501DBAF3350066632C /* AppDelegate.m in Sources */,
+				F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */,
 				F0B9734D1DBAF3350066632C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +502,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5S284KMJJS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCrash/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseFacebookAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseGoogleAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/TwitterCore/iOS\"",
+					"\"${PODS_ROOT}/TwitterKit/iOS\"",
+				);
 				INFOPLIST_FILE = DreamShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cassianomonteiro.DreamShop;
@@ -507,6 +537,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5S284KMJJS;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCrash/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseFacebookAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseGoogleAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleNetworkingUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSymbolUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/GoogleUtilities/Frameworks/frameworks\"",
+					"\"${PODS_ROOT}/TwitterCore/iOS\"",
+					"\"${PODS_ROOT}/TwitterKit/iOS\"",
+				);
 				INFOPLIST_FILE = DreamShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cassianomonteiro.DreamShop;
