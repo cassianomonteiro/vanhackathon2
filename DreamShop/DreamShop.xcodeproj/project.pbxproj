@@ -63,6 +63,7 @@
 		F0B974071DBB969F0066632C /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FC1DBB969F0066632C /* Theme.m */; };
 		F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FE1DBB969F0066632C /* VisualEffectView.m */; };
 		F0B9740B1DBBE3D90066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */; };
+		F0B9740E1DBBF12D0066632C /* SignInDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9740D1DBBF12D0066632C /* SignInDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,8 @@
 		F0B973FD1DBB969F0066632C /* VisualEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualEffectView.h; sourceTree = "<group>"; };
 		F0B973FE1DBB969F0066632C /* VisualEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualEffectView.m; sourceTree = "<group>"; };
 		F0B9740A1DBBE3D90066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F0B9740C1DBBF12D0066632C /* SignInDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInDelegate.h; sourceTree = "<group>"; };
+		F0B9740D1DBBF12D0066632C /* SignInDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInDelegate.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -292,6 +295,8 @@
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 				F0B973861DBB87380066632C /* SearchProductsVC.h */,
 				F0B973871DBB87380066632C /* SearchProductsVC.m */,
+				F0B9740C1DBBF12D0066632C /* SignInDelegate.h */,
+				F0B9740D1DBBF12D0066632C /* SignInDelegate.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -654,6 +659,7 @@
 				F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */,
 				F0B973CE1DBB95C70066632C /* DisclosureIndicatorView.m in Sources */,
 				F0B973DA1DBB95C80066632C /* ProductViewControllerThemeTintColorTableViewCell.m in Sources */,
+				F0B9740E1DBBF12D0066632C /* SignInDelegate.m in Sources */,
 				F0B973501DBAF3350066632C /* AppDelegate.m in Sources */,
 				F0B974041DBB969F0066632C /* UIButton+PaymentButton.m in Sources */,
 				F0B973831DBB197C0066632C /* UIImage+Alpha.m in Sources */,
