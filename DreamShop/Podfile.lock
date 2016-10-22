@@ -59,6 +59,7 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
+  - Mobile-Buy-SDK (2.0.1)
   - OCMock (3.3.1)
   - RestKit (0.27.0):
     - RestKit/Core (= 0.27.0)
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - FirebaseUI/Twitter
   - FontAwesomeIconFactory
   - MagicalRecord
+  - Mobile-Buy-SDK
   - OCMock
   - RestKit
   - RestKit/Testing
@@ -117,6 +119,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  Mobile-Buy-SDK: 7413347467dce332d6803a25515e9e3cf38a5126
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   RestKit: a0244db34e14ed9cf059fcee2be6733cc162c34a
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
@@ -125,6 +128,6 @@ SPEC CHECKSUMS:
   TwitterCore: 95c46af93112768a7983bd370d66023553601d01
   TwitterKit: dd8042698b0ff5bd3066fa919b3b2b50d8eed829
 
-PODFILE CHECKSUM: 18deb9c431430c79d1c2e005d10e5ac431de47e3
+PODFILE CHECKSUM: 961183b9ad1805dec7eb3d8e79e1c8da687c8ee5
 
 COCOAPODS: 1.0.1

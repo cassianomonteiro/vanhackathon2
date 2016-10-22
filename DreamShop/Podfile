@@ -13,6 +13,7 @@ target 'DreamShop' do
   pod 'MagicalRecord'
   pod 'RestKit'
   pod 'RestKit/Testing'
+  pod 'Mobile-Buy-SDK'
 
   target 'DreamShopTests' do
     inherit! :search_paths
