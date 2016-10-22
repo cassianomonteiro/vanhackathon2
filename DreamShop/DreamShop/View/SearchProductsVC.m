@@ -21,10 +21,12 @@ static NSString *ProductCellID = @"ProductCell";
 @implementation ProductCell
 @end
 
-@interface SearchProductsVC ()
+@interface SearchProductsVC () <UISearchResultsUpdating>
 @property (nonatomic, strong) BUYClient *client;
 @property (nonatomic, strong) NSArray *products;
+@property (nonatomic, strong) NSArray *filteredProducts;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UISearchController *searchController;
 @end
 
 @implementation SearchProductsVC
@@ -33,11 +35,12 @@ static NSString *ProductCellID = @"ProductCell";
     [super viewDidLoad];
     
     self.products = @[];
+    self.filteredProducts = self.products;
     self.activityIndicator = [self createActivityIndicator];
+    self.searchController = [self createSearchController];
     self.client = [[BUYClient alloc] initWithShopDomain:SHOP_DOMAIN
                                                  apiKey:API_KEY
                                                   appId:APP_ID];
-    
     [self loadProducts];
 }
 
@@ -52,7 +55,7 @@ static NSString *ProductCellID = @"ProductCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.products.count;
+    return self.filteredProducts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,7 +66,7 @@ static NSString *ProductCellID = @"ProductCell";
         cell = [[ProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ProductCellID];
     }
     
-    BUYProduct *product = self.products[indexPath.row];
+    BUYProduct *product = self.filteredProducts[indexPath.row];
     
     cell.productTitle.text = product.title;
     cell.productImage.image = nil;
@@ -80,7 +83,7 @@ static NSString *ProductCellID = @"ProductCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BUYProduct *product = self.products[indexPath.row];
+    BUYProduct *product = self.filteredProducts[indexPath.row];
     
     [self.activityIndicator startAnimating];
     [self.view bringSubviewToFront:self.activityIndicator];
@@ -113,6 +116,7 @@ static NSString *ProductCellID = @"ProductCell";
         self.tableView.userInteractionEnabled = YES;
         if (error == nil && products) {
             self.products = products;
+            self.filteredProducts = products;
             [self.tableView reloadData];
         }
         else {
@@ -146,6 +150,33 @@ static NSString *ProductCellID = @"ProductCell";
                                                          multiplier:1.0
                                                            constant:0.0]];
     return activityIndicator;
+}
+
+- (UISearchController *)createSearchController
+{
+    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    searchController.searchResultsUpdater = self;
+    searchController.dimsBackgroundDuringPresentation = NO;
+    self.tableView.tableHeaderView = searchController.searchBar;
+    self.definesPresentationContext = YES;
+    
+    return searchController;
+}
+
+#pragma mark - <UISearchResultsUpdating>
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *filterText = searchController.searchBar.text;
+    
+    if (filterText && filterText.length > 0) {
+        self.filteredProducts = [self.products filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title CONTAINS[cd] %@", filterText]];
+    }
+    else {
+        self.filteredProducts = self.products;
+    }
+    
+    [self.tableView reloadData];
 }
 
 @end
