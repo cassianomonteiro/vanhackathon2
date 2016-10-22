@@ -14,7 +14,6 @@
 		F0B973561DBAF3350066632C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B973541DBAF3350066632C /* Main.storyboard */; };
 		F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0B973571DBAF3350066632C /* DreamShop.xcdatamodeld */; };
 		F0B9735B1DBAF3350066632C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B9735A1DBAF3350066632C /* Assets.xcassets */; };
-		F0B9735E1DBAF3350066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B9735C1DBAF3350066632C /* LaunchScreen.storyboard */; };
 		F0B973691DBAF3350066632C /* DreamShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973681DBAF3350066632C /* DreamShopTests.m */; };
 		F0B973741DBAF4100066632C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B973731DBAF4100066632C /* GoogleService-Info.plist */; };
 		F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973771DBAF6E80066632C /* NewsFeedVC.m */; };
@@ -63,6 +62,7 @@
 		F0B974061DBB969F0066632C /* Theme+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FA1DBB969F0066632C /* Theme+Additions.m */; };
 		F0B974071DBB969F0066632C /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FC1DBB969F0066632C /* Theme.m */; };
 		F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FE1DBB969F0066632C /* VisualEffectView.m */; };
+		F0B9740B1DBBE3D90066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,6 @@
 		F0B973551DBAF3350066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0B973581DBAF3350066632C /* DreamShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DreamShop.xcdatamodel; sourceTree = "<group>"; };
 		F0B9735A1DBAF3350066632C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F0B9735D1DBAF3350066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0B9735F1DBAF3350066632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0B973641DBAF3350066632C /* DreamShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B973681DBAF3350066632C /* DreamShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamShopTests.m; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		F0B973FC1DBB969F0066632C /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		F0B973FD1DBB969F0066632C /* VisualEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualEffectView.h; sourceTree = "<group>"; };
 		F0B973FE1DBB969F0066632C /* VisualEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualEffectView.m; sourceTree = "<group>"; };
+		F0B9740A1DBBE3D90066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -255,9 +255,9 @@
 				F0B973751DBAF6C10066632C /* View */,
 				F0B9734E1DBAF3350066632C /* AppDelegate.h */,
 				F0B9734F1DBAF3350066632C /* AppDelegate.m */,
+				F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */,
 				F0B973541DBAF3350066632C /* Main.storyboard */,
 				F0B9735A1DBAF3350066632C /* Assets.xcassets */,
-				F0B9735C1DBAF3350066632C /* LaunchScreen.storyboard */,
 				F0B9735F1DBAF3350066632C /* Info.plist */,
 				F0B973731DBAF4100066632C /* GoogleService-Info.plist */,
 				F0B973571DBAF3350066632C /* DreamShop.xcdatamodeld */,
@@ -534,10 +534,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0B9735E1DBAF3350066632C /* LaunchScreen.storyboard in Resources */,
 				F0B973741DBAF4100066632C /* GoogleService-Info.plist in Resources */,
 				F0B9735B1DBAF3350066632C /* Assets.xcassets in Resources */,
 				F0B973CB1DBB95C70066632C /* ActionableFooterView.xib in Resources */,
+				F0B9740B1DBBE3D90066632C /* LaunchScreen.storyboard in Resources */,
 				F0B973561DBAF3350066632C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,10 +727,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F0B9735C1DBAF3350066632C /* LaunchScreen.storyboard */ = {
+		F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F0B9735D1DBAF3350066632C /* Base */,
+				F0B9740A1DBBE3D90066632C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -835,6 +835,7 @@
 			baseConfigurationReference = 7074704A4654C89BD63E028A /* Pods-DreamShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				DEVELOPMENT_TEAM = 5S284KMJJS;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -862,6 +863,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cassianomonteiro.DreamShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -870,6 +872,7 @@
 			baseConfigurationReference = A4067BFC4C6F9D4F63DFE4AB /* Pods-DreamShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				DEVELOPMENT_TEAM = 5S284KMJJS;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -897,6 +900,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.cassianomonteiro.DreamShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

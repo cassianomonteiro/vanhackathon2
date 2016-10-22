@@ -1,5 +1,17 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - Fabric (1.6.10)
+  - FBSDKCoreKit (4.16.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.16.1):
+    - FBSDKCoreKit
+  - Firebase/Analytics (3.7.1):
+    - Firebase/Core
   - Firebase/Auth (3.7.1):
     - Firebase/Core
     - FirebaseAuth (= 3.0.5)
@@ -9,6 +21,9 @@ PODS:
   - Firebase/Crash (3.7.1):
     - Firebase/Core
     - FirebaseCrash (= 1.0.7)
+  - Firebase/Storage (3.7.1):
+    - Firebase/Core
+    - FirebaseStorage (= 1.0.3)
   - FirebaseAnalytics (3.4.4):
     - FirebaseCore (~> 3.4)
     - FirebaseInstanceID (~> 1.0)
@@ -18,6 +33,11 @@ PODS:
     - FirebaseAnalytics (~> 3.3)
     - GoogleNetworkingUtilities (~> 1.2)
     - GoogleUtilities (~> 1.2)
+  - FirebaseAuthUI (0.6.2):
+    - FirebaseAuthUI/AuthBase (= 0.6.2)
+  - FirebaseAuthUI/AuthBase (0.6.2):
+    - Firebase/Analytics (~> 3.0)
+    - Firebase/Auth (~> 3.0)
   - FirebaseCore (3.4.3):
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleUtilities (~> 1.2)
@@ -27,14 +47,29 @@ PODS:
     - GoogleInterchangeUtilities (~> 1.2)
     - GoogleSymbolUtilities (~> 1.1)
     - GoogleUtilities (~> 1.2)
-  - FirebaseInstanceID (1.0.8)
-  - FirebaseUI/Auth (0.6.1):
-    - Firebase/Auth
-  - FirebaseUI/Google (0.6.1):
-    - FirebaseUI/Auth
+  - FirebaseFacebookAuthUI (0.6.2):
+    - FirebaseFacebookAuthUI/Facebook (= 0.6.2)
+  - FirebaseFacebookAuthUI/Facebook (0.6.2):
+    - FBSDKLoginKit (~> 4.0)
+    - FirebaseAuthUI/AuthBase
+  - FirebaseGoogleAuthUI (0.6.2):
+    - FirebaseGoogleAuthUI/Google (= 0.6.2)
+  - FirebaseGoogleAuthUI/Google (0.6.2):
+    - FirebaseAuthUI/AuthBase
     - GoogleSignIn (~> 4.0)
-  - FirebaseUI/Twitter (0.6.1):
-    - FirebaseUI/Auth
+  - FirebaseInstanceID (1.0.8)
+  - FirebaseStorage (1.0.3):
+    - FirebaseAnalytics (~> 3.3)
+    - GoogleNetworkingUtilities (~> 1.2)
+  - FirebaseStorageUI (0.6.2):
+    - FirebaseStorageUI/Storage (= 0.6.2)
+  - FirebaseStorageUI/Storage (0.6.2):
+    - Firebase/Storage (~> 3.0)
+    - SDWebImage
+  - FirebaseTwitterAuthUI (0.6.2):
+    - FirebaseTwitterAuthUI/Twitter (= 0.6.2)
+  - FirebaseTwitterAuthUI/Twitter (0.6.2):
+    - FirebaseAuthUI/AuthBase
     - TwitterKit (~> 2.4)
   - FontAwesomeIconFactory (2.1.1)
   - GoogleAppUtilities (1.1.2):
@@ -82,6 +117,9 @@ PODS:
   - RestKit/Testing (0.27.0):
     - RestKit/Network
   - RKValueTransformers (1.1.3)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SOCKit (1.1)
   - TransitionKit (2.2.1)
   - TwitterCore (2.5.0):
@@ -91,8 +129,11 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Crash
-  - FirebaseUI/Google
-  - FirebaseUI/Twitter
+  - FirebaseAuthUI (from `https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_auth.podspec`)
+  - FirebaseFacebookAuthUI (from `https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_fb.podspec`)
+  - FirebaseGoogleAuthUI (from `https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_ggl.podspec`)
+  - FirebaseStorageUI (from `https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_storage.podspec`)
+  - FirebaseTwitterAuthUI (from `https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_tw.podspec`)
   - FontAwesomeIconFactory
   - MagicalRecord
   - Mobile-Buy-SDK
@@ -100,15 +141,52 @@ DEPENDENCIES:
   - RestKit
   - RestKit/Testing
 
+EXTERNAL SOURCES:
+  FirebaseAuthUI:
+    :podspec: https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_auth.podspec
+  FirebaseFacebookAuthUI:
+    :podspec: https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_fb.podspec
+  FirebaseGoogleAuthUI:
+    :podspec: https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_ggl.podspec
+  FirebaseStorageUI:
+    :podspec: https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_storage.podspec
+  FirebaseTwitterAuthUI:
+    :podspec: https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_tw.podspec
+
+CHECKOUT OPTIONS:
+  FirebaseAuthUI:
+    :commit: 5305e2da4dc6021200bd69e765cdb659374430a3
+    :git: https://github.com/firebase/FirebaseUI-iOS.git
+  FirebaseFacebookAuthUI:
+    :commit: 5305e2da4dc6021200bd69e765cdb659374430a3
+    :git: https://github.com/firebase/FirebaseUI-iOS.git
+  FirebaseGoogleAuthUI:
+    :commit: 5305e2da4dc6021200bd69e765cdb659374430a3
+    :git: https://github.com/firebase/FirebaseUI-iOS.git
+  FirebaseStorageUI:
+    :commit: 5305e2da4dc6021200bd69e765cdb659374430a3
+    :git: https://github.com/firebase/FirebaseUI-iOS.git
+  FirebaseTwitterAuthUI:
+    :commit: 5305e2da4dc6021200bd69e765cdb659374430a3
+    :git: https://github.com/firebase/FirebaseUI-iOS.git
+
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
+  FBSDKCoreKit: 7a6baaed4a2b2a244ba253346713bdbc74df135b
+  FBSDKLoginKit: 469a56cebe2e1ed62b1621d0b155970fd6aac2d8
   Firebase: be473484f0d515e72ffd04acf22f981773c23e58
   FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
   FirebaseAuth: 75a062bbf2d3c97d1e6e55bbc110e13a6853e25d
+  FirebaseAuthUI: 4fd0b0e8bc1bac5bffa9ca6c9785e2824e66751d
   FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
   FirebaseCrash: 2efeb3715b76ac843b841529ce413efb67e5fd4d
+  FirebaseFacebookAuthUI: 2ab180ea7e7b5d24ba13c88c388ee93846deb46a
+  FirebaseGoogleAuthUI: c53b6f47ffab19b50a3ca72c759959bba07d33cc
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
-  FirebaseUI: cfe7b83264b9fbdd7e4c9804327a397471e2643b
+  FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
+  FirebaseStorageUI: 3e6674d76f4fa32c4443c16ed214fe2da59bb867
+  FirebaseTwitterAuthUI: 9fa73687a3b4a0949a819cde3baf7e06f760eb79
   FontAwesomeIconFactory: bb9ce26d3dd13044854a82d380023c8e7d3ebf1a
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleAuthUtilities: ccad2e0a9284699973ff57c0dd24c3893657fda4
@@ -123,11 +201,12 @@ SPEC CHECKSUMS:
   OCMock: f3f61e6eaa16038c30caa5798c5e49d3307b6f22
   RestKit: a0244db34e14ed9cf059fcee2be6733cc162c34a
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   TwitterCore: 95c46af93112768a7983bd370d66023553601d01
   TwitterKit: dd8042698b0ff5bd3066fa919b3b2b50d8eed829
 
-PODFILE CHECKSUM: 961183b9ad1805dec7eb3d8e79e1c8da687c8ee5
+PODFILE CHECKSUM: 770948989b82aa1f11c18473544505334d2e025e
 
 COCOAPODS: 1.0.1

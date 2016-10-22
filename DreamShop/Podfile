@@ -7,8 +7,16 @@ target 'DreamShop' do
 
   # Pods for DreamShop
   pod 'FontAwesomeIconFactory'
-  pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Twitter'
+  #pod 'FirebaseUI/Google'
+  #pod 'FirebaseUI/Twitter'
+  
+  pod 'FirebaseAuthUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_auth.podspec"
+  #pod 'FirebaseDatabaseUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_db.podspec"
+  pod 'FirebaseStorageUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_storage.podspec"
+  pod 'FirebaseFacebookAuthUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_fb.podspec"
+  pod 'FirebaseGoogleAuthUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_ggl.podspec"
+  pod 'FirebaseTwitterAuthUI', :podspec => "https://raw.githubusercontent.com/firebase/FirebaseUI-iOS/master/FirebaseUI_dev_tw.podspec"
+  
   pod 'Firebase/Crash'
   pod 'MagicalRecord'
   pod 'RestKit'
