@@ -18,6 +18,10 @@
 		F0B973691DBAF3350066632C /* DreamShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973681DBAF3350066632C /* DreamShopTests.m */; };
 		F0B973741DBAF4100066632C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B973731DBAF4100066632C /* GoogleService-Info.plist */; };
 		F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973771DBAF6E80066632C /* NewsFeedVC.m */; };
+		F0B9737B1DBB125B0066632C /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */; };
+		F0B973831DBB197C0066632C /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9737E1DBB197C0066632C /* UIImage+Alpha.m */; };
+		F0B973841DBB197C0066632C /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973801DBB197C0066632C /* UIImage+Resize.m */; };
+		F0B973851DBB197C0066632C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973821DBB197C0066632C /* UIImage+RoundedCorner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		F0B973731DBAF4100066632C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0B973761DBAF6E80066632C /* NewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedVC.h; sourceTree = "<group>"; };
 		F0B973771DBAF6E80066632C /* NewsFeedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedVC.m; sourceTree = "<group>"; };
+		F0B973791DBB125B0066632C /* AlertControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertControllerFactory.h; sourceTree = "<group>"; };
+		F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertControllerFactory.m; sourceTree = "<group>"; };
+		F0B9737D1DBB197C0066632C /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		F0B9737E1DBB197C0066632C /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		F0B9737F1DBB197C0066632C /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		F0B973801DBB197C0066632C /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		F0B973811DBB197C0066632C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		F0B973821DBB197C0066632C /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,6 +129,7 @@
 		F0B9734A1DBAF3350066632C /* DreamShop */ = {
 			isa = PBXGroup;
 			children = (
+				F0B9737C1DBB19510066632C /* lib */,
 				F0B973751DBAF6C10066632C /* View */,
 				F0B9734E1DBAF3350066632C /* AppDelegate.h */,
 				F0B9734F1DBAF3350066632C /* AppDelegate.m */,
@@ -151,10 +164,25 @@
 		F0B973751DBAF6C10066632C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F0B973791DBB125B0066632C /* AlertControllerFactory.h */,
+				F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */,
 				F0B973761DBAF6E80066632C /* NewsFeedVC.h */,
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F0B9737C1DBB19510066632C /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F0B9737D1DBB197C0066632C /* UIImage+Alpha.h */,
+				F0B9737E1DBB197C0066632C /* UIImage+Alpha.m */,
+				F0B9737F1DBB197C0066632C /* UIImage+Resize.h */,
+				F0B973801DBB197C0066632C /* UIImage+Resize.m */,
+				F0B973811DBB197C0066632C /* UIImage+RoundedCorner.h */,
+				F0B973821DBB197C0066632C /* UIImage+RoundedCorner.m */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,10 +389,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B973851DBB197C0066632C /* UIImage+RoundedCorner.m in Sources */,
 				F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */,
 				F0B973501DBAF3350066632C /* AppDelegate.m in Sources */,
+				F0B973831DBB197C0066632C /* UIImage+Alpha.m in Sources */,
 				F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */,
 				F0B9734D1DBAF3350066632C /* main.m in Sources */,
+				F0B9737B1DBB125B0066632C /* AlertControllerFactory.m in Sources */,
+				F0B973841DBB197C0066632C /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

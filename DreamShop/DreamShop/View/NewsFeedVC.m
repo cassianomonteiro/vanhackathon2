@@ -8,12 +8,12 @@
 
 #import "NewsFeedVC.h"
 #import <FontAwesomeIconFactory.h>
-#import <FirebaseAuth/FirebaseAuth.h>
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <FirebaseAuth/FirebaseAuth.h>
+#import <FirebaseAuthUI/FirebaseAuthUI.h>
 #import <FirebaseGoogleAuthUI/FirebaseGoogleAuthUI.h>
 #import <FirebaseTwitterAuthUI/FirebaseTwitterAuthUI.h>
-#import <FirebaseAuthUI/FirebaseAuthUI.h>
-#import <FirebaseAuth/FirebaseAuth.h>
+#import "AlertControllerFactory.h"
 
 @interface NewsFeedVC () <FIRAuthUIDelegate>
 @property (nonatomic) FIRAuth *auth;
@@ -79,6 +79,17 @@
     [self refreshLoginButton];
 }
 
+- (IBAction)postTapped:(UIBarButtonItem *)sender
+{
+    UIAlertController *alertController =
+    [AlertControllerFactory photoSourceAlertControllerForViewController:self
+                                                          withImageSize:self.photoImageView.frame.size
+                                                      completionHandler:^(UIImage *image) {
+        self.photoImageView.image = image;
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 - (void)authUI:(FIRAuthUI *)authUI didSignInWithUser:(FIRUser *)user error:(NSError *)error
 {
     NSLog(@"%@ id: %@", user.isAnonymous ? @"Anonymous" : @"Signedin", user.uid);
@@ -95,4 +106,5 @@
         }
     }
 }
+
 @end

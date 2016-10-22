@@ -10,7 +10,10 @@
 
 @interface NewsFeedVC : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *loginButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
 - (IBAction)loginTapped:(UIBarButtonItem *)sender;
+- (IBAction)postTapped:(UIBarButtonItem *)sender;
 
 @end

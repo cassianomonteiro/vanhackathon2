@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,11 +25,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zsf-52-5gv">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Zsf-52-5gv" secondAttribute="height" multiplier="1:1" id="3ek-1c-01u"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="B2l-OO-GMy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="D7T-KD-yyL"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Zsf-52-5gv" secondAttribute="leading" id="Nzo-8W-JcZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zsf-52-5gv" secondAttribute="trailing" id="RAE-VW-ayO"/>
                             <constraint firstItem="B2l-OO-GMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RWr-O6-Sbk"/>
+                            <constraint firstItem="Zsf-52-5gv" firstAttribute="top" secondItem="B2l-OO-GMy" secondAttribute="bottom" constant="8" id="f5g-bs-4LF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News feed" id="sar-Le-oOG">
@@ -36,9 +46,16 @@
                                 <action selector="loginTapped:" destination="BYZ-38-t0r" id="2Gq-Pv-IWB"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="hds-FX-tg5">
+                            <connections>
+                                <action selector="postTapped:" destination="BYZ-38-t0r" id="ehN-zt-yPx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="loginButton" destination="moa-Bc-3Lc" id="ddd-xl-9xi"/>
+                        <outlet property="photoImageView" destination="Zsf-52-5gv" id="wsq-2S-zYr"/>
+                        <outlet property="postButton" destination="hds-FX-tg5" id="n9k-7c-C56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -50,7 +67,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MuH-Vx-70i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGf-bu-e1f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGf-bu-e1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
