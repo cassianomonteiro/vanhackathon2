@@ -9,8 +9,15 @@
 #import "DreamDetailVC.h"
 #import <UIImageView+AFRKNetworking.h>
 #import "UIImage+Resize.h"
+#import "ProductViewNavigationController.h"
+#import "ProductViewController.h"
+
+#define SHOP_DOMAIN @"dreamandshop.myshopify.com"
+#define API_KEY @"8ada472409a58bacffb8c054e1770894"
+#define APP_ID @"8"
 
 @interface DreamDetailVC () <UPCardsCarouselDataSource, UPCardsCarouselDelegate>
+@property (nonatomic, strong) BUYClient *client;
 @end
 
 @implementation DreamDetailVC
@@ -19,6 +26,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.client = [[BUYClient alloc] initWithShopDomain:SHOP_DOMAIN
+                                                 apiKey:API_KEY
+                                                  appId:APP_ID];
     
     self.title = self.dream.layers.firstObject.layerDescription;
     self.dreamLabel.text = self.dream.layers.firstObject.layerDescription;
@@ -48,7 +59,7 @@
 
 - (UIView*)carousel:(UPCardsCarousel *)carousel viewForCardAtIndex:(NSUInteger)index
 {
-    return [self createCardViewWithImageURL:self.dream.layers[index].layerURL];
+    return [self createCardViewWithLayer:self.dream.layers[index]];
 }
 
 - (NSString*)carousel:(UPCardsCarousel *)carousel labelForCardAtIndex:(NSUInteger)index
@@ -60,12 +71,50 @@
 
 - (void)carousel:(UPCardsCarousel *)carousel didTouchCardAtIndex:(NSUInteger)index
 {
+    Layer *layer = self.dream.layers[index];
     
+    if ([LayerTypeProduct isEqualToString:layer.type]) {
+        
+        [self startProgressAnimation];
+        
+        [self.client getProductById:layer.productId completion:^(BUYProduct * _Nullable product, NSError * _Nullable error) {
+            
+            if (!error) {
+                ProductViewController *productViewController = [[ProductViewController alloc] initWithClient:self.client theme:nil];
+                [productViewController loadWithProduct:product completion:^(BOOL success, NSError *error) {
+                    if (!error) {
+                        [self.navigationController pushViewController:productViewController animated:YES];
+                    }
+                    [self stopProgressAnimation];
+                }];
+            }
+            else {
+                [self stopProgressAnimation];
+            }
+            
+        }];
+    }
+}
+
+- (void)startProgressAnimation
+{
+    [self.activityIndicator startAnimating];
+    self.view.userInteractionEnabled = NO;
+    self.view.alpha = 0.7f;
+}
+
+- (void)stopProgressAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator stopAnimating];
+        self.view.userInteractionEnabled = YES;
+        self.view.alpha = 1.f;
+    });
 }
 
 #pragma mark - Helpers
 
-- (UIView*)createCardViewWithImageURL:(NSURL *)imageURL
+- (UIView*)createCardViewWithLayer:(Layer *)layer
 {
     UIView *cardView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 240, 240)];
     [cardView setBackgroundColor:[UIColor colorWithRed:180./255. green:180./255. blue:180./255. alpha:1.]];
@@ -76,17 +125,22 @@
     [cardView.layer setBorderWidth:10.];
     [cardView.layer setCornerRadius:4.];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:imageURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:layer.layerURL];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectInset(cardView.frame, 20, 20)];
     UIImageView __weak *weakImageView = imageView;
     
     [imageView setImageWithURLRequest:request placeholderImage:nil
                               success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        weakImageView.image = [self squaredImage:image forSize:weakImageView.frame.size];
-    }
+                                  
+                                  weakImageView.image = [self squaredImage:image forSize:weakImageView.frame.size];
+                                  
+                                  if ([LayerTypeProduct isEqualToString:layer.type]) {
+                                      [self addShopifyIconToImageView:weakImageView];
+                                  }
+                              }
                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        weakImageView.image = nil;
-    }];
+                                  weakImageView.image = nil;
+                              }];
     
     [cardView addSubview:imageView];
     return cardView;
@@ -103,6 +157,20 @@
                                     size.width,
                                     size.height);
     return [scaledImage croppedImage:croppedRect];
+}
+
+- (void)addShopifyIconToImageView:(UIImageView *)imageView
+{
+    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 34.f,
+                                  imageView.frame.size.height - 34.f,
+                                  30.f,
+                                  30.f);
+    
+    UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+    shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
+    
+    [imageView addSubview:shopifyImageView];
 }
 
 - (NSDictionary<NSString *, UIColor *> *)subCategoriesColors

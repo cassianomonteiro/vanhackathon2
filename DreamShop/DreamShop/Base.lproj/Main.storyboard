@@ -373,6 +373,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-fr-Xod">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -382,6 +385,7 @@
                             <constraint firstItem="AAI-4C-zn8" firstAttribute="leading" secondItem="Wp1-LF-aNb" secondAttribute="trailing" constant="8" id="2Zx-7s-vhp"/>
                             <constraint firstItem="dFS-KQ-Lpx" firstAttribute="width" secondItem="xJS-RG-e3N" secondAttribute="width" id="3E8-3V-Rcc"/>
                             <constraint firstItem="j41-Tn-1G9" firstAttribute="top" secondItem="0yL-7X-juF" secondAttribute="bottom" constant="8" id="5Fp-Sg-t7j"/>
+                            <constraint firstItem="Qq7-fr-Xod" firstAttribute="centerY" secondItem="t6V-bB-wpH" secondAttribute="centerY" id="7eZ-zK-VH2"/>
                             <constraint firstItem="BIG-pT-1DG" firstAttribute="width" secondItem="xJS-RG-e3N" secondAttribute="width" id="8Kp-ar-lWv"/>
                             <constraint firstItem="kRI-0m-Ogl" firstAttribute="width" secondItem="t6V-bB-wpH" secondAttribute="width" id="A7g-ge-apu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0yL-7X-juF" secondAttribute="trailing" id="At7-0n-6l0"/>
@@ -403,6 +407,7 @@
                             <constraint firstItem="OwC-Rs-jzr" firstAttribute="top" secondItem="Ar6-g5-b8l" secondAttribute="bottom" constant="8" id="Nws-cf-7Ln"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pd7-jQ-yLl" secondAttribute="trailing" id="O6h-bK-Fvd"/>
                             <constraint firstItem="AAI-4C-zn8" firstAttribute="top" secondItem="A7E-6H-6Y7" secondAttribute="top" id="OqJ-aP-pxF"/>
+                            <constraint firstItem="Qq7-fr-Xod" firstAttribute="centerX" secondItem="t6V-bB-wpH" secondAttribute="centerX" id="OvK-ac-gIS"/>
                             <constraint firstItem="WZb-bC-cwd" firstAttribute="leading" secondItem="ZRV-Lp-v7w" secondAttribute="trailing" constant="16" id="Qk6-HT-zEx"/>
                             <constraint firstItem="j41-Tn-1G9" firstAttribute="centerX" secondItem="t6V-bB-wpH" secondAttribute="centerX" id="R3k-GC-y62"/>
                             <constraint firstItem="KsH-0o-2oD" firstAttribute="leading" secondItem="Qee-Lm-VmT" secondAttribute="trailing" constant="8" id="STd-Pp-5PG"/>
@@ -449,6 +454,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Qq7-fr-Xod" id="Kml-Tv-qRB"/>
                         <outlet property="dreamTextField" destination="0yL-7X-juF" id="XXy-z3-IU4"/>
                         <outlet property="photoButton" destination="ZRV-Lp-v7w" id="JzD-K8-UDf"/>
                         <outlet property="photoImageView" destination="j41-Tn-1G9" id="I1N-sp-dLP"/>
@@ -604,6 +610,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeX-m6-a1a">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eo3-ei-k3h">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -612,7 +621,9 @@
                             <constraint firstItem="VeX-m6-a1a" firstAttribute="top" secondItem="lGY-mx-UiJ" secondAttribute="bottom" id="eHY-mc-aZs"/>
                             <constraint firstItem="lGY-mx-UiJ" firstAttribute="top" secondItem="SdT-We-mzR" secondAttribute="bottom" constant="16" id="gGQ-dx-Ekd"/>
                             <constraint firstItem="b4C-Dh-rqY" firstAttribute="top" secondItem="SdT-We-mzR" secondAttribute="bottom" id="gJJ-7F-XNu"/>
+                            <constraint firstItem="eo3-ei-k3h" firstAttribute="centerX" secondItem="Nza-Ot-0G7" secondAttribute="centerX" id="h0E-TQ-3MO"/>
                             <constraint firstItem="lGY-mx-UiJ" firstAttribute="leading" secondItem="Nza-Ot-0G7" secondAttribute="leadingMargin" id="kp6-mk-QFb"/>
+                            <constraint firstItem="eo3-ei-k3h" firstAttribute="centerY" secondItem="Nza-Ot-0G7" secondAttribute="centerY" id="ooS-fb-enP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lGY-mx-UiJ" secondAttribute="trailing" id="qqd-la-6y3"/>
                             <constraint firstItem="VeX-m6-a1a" firstAttribute="width" secondItem="Nza-Ot-0G7" secondAttribute="width" id="qvX-kr-3rD"/>
                             <constraint firstItem="VeX-m6-a1a" firstAttribute="centerX" secondItem="Nza-Ot-0G7" secondAttribute="centerX" id="sr6-3h-wKO"/>
@@ -620,6 +631,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="eo3-ei-k3h" id="Eec-jM-s4a"/>
                         <outlet property="cardsCarousel" destination="VeX-m6-a1a" id="CDT-t6-dUE"/>
                         <outlet property="categoryImageView" destination="BZ1-u2-DJd" id="cPn-Lk-LJK"/>
                         <outlet property="categoryLabel" destination="Xjz-sh-Fhz" id="ws4-Lx-Ms0"/>

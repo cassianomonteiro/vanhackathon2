@@ -87,11 +87,11 @@
     
     ProductViewController *productViewController = [[ProductViewController alloc] initWithClient:self.client theme:nil];
     [productViewController loadWithProduct:product completion:^(BOOL success, NSError *error) {
-        if (error == nil) {
+        if (!error ) {
             [self.navigationController pushViewController:productViewController animated:YES];
-            [self.activityIndicator stopAnimating];
-            self.tableView.userInteractionEnabled = YES;
         }
+        [self.activityIndicator stopAnimating];
+        self.tableView.userInteractionEnabled = YES;
     }];
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
