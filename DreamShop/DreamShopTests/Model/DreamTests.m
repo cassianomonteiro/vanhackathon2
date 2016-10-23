@@ -23,7 +23,6 @@
     // Configure RKTestFixture
     [RKTestFixture setFixtureBundle:[NSBundle bundleForClass:[self class]]];
     self.dream = [[Dream alloc] init];
-//    self.dream.user = [[User alloc] init];
 }
 
 - (void)tearDown {
@@ -40,7 +39,7 @@
     // When
     RKMappingTest *mappingTest = [RKMappingTest testForMapping:[Dream requestMapping] sourceObject:self.dream destinationObject:nil];
     RKPropertyMappingTestExpectation *categoryExpectation = [RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"category" destinationKeyPath:@"category" value:@"Category"];
-    RKPropertyMappingTestExpectation *subCategoryExpectation = [RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"subCategory" destinationKeyPath:@"subcategory" value:@"SubCategory"];
+    RKPropertyMappingTestExpectation *subCategoryExpectation = [RKPropertyMappingTestExpectation expectationWithSourceKeyPath:@"subCategory" destinationKeyPath:@"subcategory" value:@"subcategory"];
     
     // Then
     XCTAssertTrue([mappingTest evaluateExpectation:categoryExpectation error:nil]);
@@ -61,6 +60,8 @@
     XCTAssertEqualObjects(self.dream.category, @"movie");
     XCTAssertEqualObjects(self.dream.subCategory, @"inception");
     XCTAssertEqualObjects(self.dream.user.userId, @2);
+    XCTAssertEqual(self.dream.layers.count, 1);
+    XCTAssertEqualObjects(self.dream.layers.firstObject.layerId, @3);
 }
 
 @end

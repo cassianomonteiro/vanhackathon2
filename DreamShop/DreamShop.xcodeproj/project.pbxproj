@@ -77,6 +77,9 @@
 		F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B2B1DBC448D00456856 /* DreamsResponse.json */; };
 		F0E28B2E1DBC44FE00456856 /* DreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B2D1DBC44FE00456856 /* DreamTests.m */; };
 		F0E28B311DBC5CDC00456856 /* DreamDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */; };
+		F0E28B331DBC757400456856 /* Layer.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B321DBC757400456856 /* Layer.json */; };
+		F0E28B351DBC759C00456856 /* LayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B341DBC759C00456856 /* LayerTests.m */; };
+		F0E28B371DBC7C5800456856 /* AllDreams.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B361DBC7C5800456856 /* AllDreams.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +224,9 @@
 		F0E28B2D1DBC44FE00456856 /* DreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTests.m; sourceTree = "<group>"; };
 		F0E28B2F1DBC5CDC00456856 /* DreamDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamDetailVC.h; sourceTree = "<group>"; };
 		F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamDetailVC.m; sourceTree = "<group>"; };
+		F0E28B321DBC757400456856 /* Layer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Layer.json; sourceTree = "<group>"; };
+		F0E28B341DBC759C00456856 /* LayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerTests.m; sourceTree = "<group>"; };
+		F0E28B361DBC7C5800456856 /* AllDreams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllDreams.json; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -525,8 +531,10 @@
 		F0B974261DBC39340066632C /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				F0E28B361DBC7C5800456856 /* AllDreams.json */,
 				F0E28B291DBC447A00456856 /* Dream.json */,
 				F0E28B2B1DBC448D00456856 /* DreamsResponse.json */,
+				F0E28B321DBC757400456856 /* Layer.json */,
 				F0B974291DBC39340066632C /* Server.rb */,
 				F0B9742C1DBC39340066632C /* User.json */,
 			);
@@ -537,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				F0E28B2D1DBC44FE00456856 /* DreamTests.m */,
+				F0E28B341DBC759C00456856 /* LayerTests.m */,
 				F0E28B271DBC3AEF00456856 /* UserTests.m */,
 			);
 			path = Model;
@@ -645,9 +654,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B974321DBC39340066632C /* User.json in Resources */,
+				F0E28B371DBC7C5800456856 /* AllDreams.json in Resources */,
 				F0E28B2A1DBC447A00456856 /* Dream.json in Resources */,
 				F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */,
 				F0B974301DBC39340066632C /* Server.rb in Resources */,
+				F0E28B331DBC757400456856 /* Layer.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +828,7 @@
 				F0E28B281DBC3AEF00456856 /* UserTests.m in Sources */,
 				F0E28B2E1DBC44FE00456856 /* DreamTests.m in Sources */,
 				F0B974251DBC391B0066632C /* ConnectionManagerTests.m in Sources */,
+				F0E28B351DBC759C00456856 /* LayerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

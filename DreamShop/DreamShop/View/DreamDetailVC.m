@@ -107,10 +107,17 @@
 
 - (NSDictionary<NSString *, UIColor *> *)subCategoriesColors
 {
-    return @{SubCategoryBeach : [UIColor colorWithRed:124.f/255.f green:150.f/255.f blue:172.f/255.f alpha:1.f],
-             SubCategoryCamping : [UIColor colorWithRed:121.f/255.f green:150.f/255.f blue:109.f/255.f alpha:1.f],
+    return @{
              SubCategoryAdventure : [UIColor colorWithRed:196.f/255.f green:118.f/255.f blue:135.f/255.f alpha:1.f],
+             SubCategoryBeach : [UIColor colorWithRed:124.f/255.f green:150.f/255.f blue:172.f/255.f alpha:1.f],
+             SubCategoryCamping : [UIColor colorWithRed:121.f/255.f green:150.f/255.f blue:109.f/255.f alpha:1.f],
              SubCategoryDesert : [UIColor colorWithRed:243.f/255.f green:185.f/255.f blue:54.f/255.f alpha:1.f],
+             SubCategoryOutdoor : [UIColor colorWithRed:105.f/255.f green:155.f/255.f blue:70.f/255.f alpha:1.f],
+             SubCategoryPopular : [UIColor colorWithRed:255.f/255.f green:214.f/255.f blue:101.f/255.f alpha:1.f],
+             SubCategoryProducts : [UIColor colorWithRed:103.f/255.f green:144.f/255.f blue:159.f/255.f alpha:1.f],
+             SubCategoryOthers : [UIColor colorWithRed:119.f/255.f green:119.f/255.f blue:119.f/255.f alpha:1.f],
+             SubCategorySports : [UIColor colorWithRed:135.f/255.f green:96.f/255.f blue:95.f/255.f alpha:1.f],
+             SubCategoryTravel : [UIColor colorWithRed:97.f/255.f green:91.f/255.f blue:75.f/255.f alpha:1.f],
              SubCategoryTourism : [UIColor colorWithRed:240.f/255.f green:121.f/255.f blue:121.f/255.f alpha:1.f]};
 }
 

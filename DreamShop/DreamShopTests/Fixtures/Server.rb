@@ -44,9 +44,14 @@ post '/user' do
     render_fixture('User.json')
 end
 
-
 # Route to match dreams request
 get '/api/dreams' do
     halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'
     render_fixture('DreamsResponse.json')
+end
+
+# Route to match dreams feed request
+get '/feed/dreams' do
+    halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'
+    render_fixture('AllDreams.json')
 end

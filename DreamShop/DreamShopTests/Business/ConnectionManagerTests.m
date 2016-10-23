@@ -94,7 +94,7 @@
     }];
 }
 
-#pragma mark - Lists tests
+#pragma mark - Dreams tests
 
 - (void)testRequestDreams
 {
@@ -112,6 +112,25 @@
         XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[Dream class]]);
         XCTAssertEqualObjects([returnedObjects.firstObject dreamId], @1);
         XCTAssertEqualObjects([returnedObjects.firstObject category], @"movie");
+    }];
+}
+
+- (void)testRequestAllDreams
+{
+    [self evaluateRequestBlock:^{
+        
+        // Given
+        self.manager.firebaseKey = @"abcde";
+        
+        // When
+        [self.manager requestDreamsFeedForDelegate:self.delegateMock];
+        
+    } withEvaluationBlock:^(NSArray *returnedObjects) {
+        
+        XCTAssertEqual(returnedObjects.count, 8);
+        XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[Dream class]]);
+        XCTAssertEqualObjects([returnedObjects.firstObject dreamId], @8);
+        XCTAssertEqualObjects([returnedObjects.firstObject category], @"popular");
     }];
 }
 

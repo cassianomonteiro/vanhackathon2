@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit.h>
 
 static NSString *LayerTypePhoto = @"photo";
 static NSString *LayerTypeVideo = @"video";
@@ -19,5 +20,19 @@ static NSString *LayerTypeProduct = @"product";
 @property (nonatomic, strong) NSString *layerDescription;
 @property (nonatomic, strong) NSURL *layerURL;
 @property (nonatomic, strong) NSNumber *productId;
+
+/**
+ * Mapping object for object properties into json attributes
+ *
+ * @returns RKObjectMapping object
+ */
++ (RKObjectMapping *)requestMapping;
+
+/**
+ * Mapping object for json attributes into object properties
+ *
+ * @returns RKObjectMapping object
+ */
++ (RKObjectMapping *)responseMapping;
 
 @end

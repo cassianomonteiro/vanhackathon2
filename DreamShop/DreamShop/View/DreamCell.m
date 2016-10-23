@@ -7,6 +7,7 @@
 //
 
 #import "DreamCell.h"
+#import <FontAwesomeIconFactory.h>
 #import <UIImageView+AFRKNetworking.h>
 #import "UIImage+Resize.h"
 
@@ -46,8 +47,16 @@
     cell.userImageView.image = nil;
     cell.categoryImageView.image = nil;
     
-    [cell.userImageView setImageWithURL:dream.user.photoURL];
     [cell.categoryImageView setImage:[UIImage imageNamed:dream.subCategory]];
+    
+    if (dream.user.photoURL) {
+        [cell.userImageView setImageWithURL:dream.user.photoURL];
+    }
+    else {
+        NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory buttonIconFactory];
+        factory.size = [self cellHeight];
+        cell.userImageView.image = [factory createImageForIcon:NIKFontAwesomeIconUser];
+    }
     
     NSURLRequest *request = [NSURLRequest requestWithURL:dream.layers.firstObject.layerURL];
     [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {

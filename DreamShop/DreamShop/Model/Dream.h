@@ -9,11 +9,17 @@
 #import "User.h"
 #import "Layer.h"
 
-static NSString *SubCategoryBeach       = @"Beach";
-static NSString *SubCategoryCamping     = @"Camping";
-static NSString *SubCategoryAdventure   = @"Adventure";
-static NSString *SubCategoryDesert      = @"Desert";
-static NSString *SubCategoryTourism     = @"Tourism";
+static NSString *SubCategoryAdventure   = @"adventure";
+static NSString *SubCategoryBeach       = @"beach";
+static NSString *SubCategoryCamping     = @"camping";
+static NSString *SubCategoryDesert      = @"desert";
+static NSString *SubCategoryOthers      = @"others";
+static NSString *SubCategoryOutdoor     = @"outdoor";
+static NSString *SubCategoryPopular     = @"popular";
+static NSString *SubCategoryProducts    = @"products";
+static NSString *SubCategorySports      = @"sports";
+static NSString *SubCategoryTravel      = @"travel";
+static NSString *SubCategoryTourism     = @"tourism";
 
 @interface Dream : NSObject
 

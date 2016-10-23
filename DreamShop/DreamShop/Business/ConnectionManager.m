@@ -20,8 +20,9 @@
 static ConnectionManager *_sharedInstance;
 static NSString *DefaultBaseURL = @"https://dreamwishlist-api.herokuapp.com";
 
-static NSString *UserPathPattern =  @"/user";
-static NSString *DreamsPathPattern = @"/api/dreams";
+static NSString *UserPathPattern    = @"/user";
+static NSString *DreamsPathPattern  = @"/api/dreams";
+static NSString *FeedPathPattern    = @"/feed/dreams";
 
 + (ConnectionManager *)defaultManager
 {
@@ -64,7 +65,9 @@ static NSString *DreamsPathPattern = @"/api/dreams";
 {
     return @[
              [RKRoute routeWithClass:[User class] pathPattern:UserPathPattern method:RKRequestMethodPOST],
-             [RKRoute routeWithClass:[Dream class] pathPattern:DreamsPathPattern method:RKRequestMethodGET],
+             [RKRoute routeWithName:DreamsPathPattern pathPattern:DreamsPathPattern method:RKRequestMethodGET],
+             [RKRoute routeWithName:FeedPathPattern pathPattern:FeedPathPattern method:RKRequestMethodGET]
+             
              ];
 }
 
@@ -82,6 +85,7 @@ static NSString *DreamsPathPattern = @"/api/dreams";
     return @[
              [RKResponseDescriptor responseDescriptorWithMapping:[User responseMapping] method:RKRequestMethodPOST pathPattern:UserPathPattern keyPath:nil statusCodes:statusCodes],
              [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodGET pathPattern:DreamsPathPattern keyPath:nil statusCodes:statusCodes],
+             [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodGET pathPattern:FeedPathPattern keyPath:nil statusCodes:statusCodes],
              
              // Add error response descriptor to be tried last
              [self errorResponseDescriptor]
@@ -115,13 +119,12 @@ static NSString *DreamsPathPattern = @"/api/dreams";
 
 - (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate
 {
-    [self sendRequestForObject:[Dream new] withMethod:RKRequestMethodGET andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
+    [self sendRequestForObject:[Dream new] withMethod:RKRequestMethodGET andPath:DreamsPathPattern andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
 }
 
-- (void)requestAllDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate
+- (void)requestDreamsFeedForDelegate:(id<ConnectionManagerDelegate>)delegate
 {
-    // Mock request for now
-    [self requestUserDreamsForDelegate:delegate];
+    [self sendRequestForObject:[Dream new] withMethod:RKRequestMethodGET andPath:FeedPathPattern andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
 }
 
 #pragma mark - Helpers

@@ -32,8 +32,14 @@
                                                   }];
     
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"User" toKeyPath:@"user" withMapping:[User responseMapping]]];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"Layers" toKeyPath:@"layers" withMapping:[Layer responseMapping]]];
     
     return mapping;
+}
+
+- (void)setSubCategory:(NSString *)subCategory
+{
+    _subCategory = [subCategory lowercaseString];
 }
 
 @end

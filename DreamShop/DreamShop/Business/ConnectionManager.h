@@ -38,6 +38,6 @@
 
 - (void)requestUserCreation:(User *)user forDelegate:(id<ConnectionManagerDelegate>)delegate;
 - (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate;
-- (void)requestAllDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate;
+- (void)requestDreamsFeedForDelegate:(id<ConnectionManagerDelegate>)delegate;
 
 @end

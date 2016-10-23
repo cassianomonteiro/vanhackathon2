@@ -198,7 +198,7 @@
 {
     if (objects && objects.count == 1 && [objects.firstObject isKindOfClass:[User class]]) {
         // Request all dreams after user creation
-        [[ConnectionManager defaultManager] requestAllDreamsForDelegate:self];
+        [[ConnectionManager defaultManager] requestDreamsFeedForDelegate:self];
     }
     else if (objects && objects.count > 0 && [objects.firstObject isKindOfClass:[Dream class]]) {
         self.dreams = [objects mutableCopy];
@@ -231,49 +231,10 @@
 
 - (void)loadDreams
 {
-//    [self startProgressAnimation];
-//    
-//    // Create user, if it doesn't exist yet
-//    [self.signInManager createUserForDelegate:self];
-    
-    
-//     Mock dreams
-        NSArray<NSString *> *subCategories = @[SubCategoryBeach,
-                                               SubCategoryDesert,
-                                               SubCategoryCamping,
-                                               SubCategoryTourism,
-                                               SubCategoryAdventure];
-    
-        self.dreams = [NSMutableArray arrayWithCapacity:5];
-    
-        for (int i = 0; i<5; i++) {
-            Dream *dream = [[Dream alloc] init];
-            dream.dreamId = @(i);
-            dream.category = [NSString stringWithFormat:@"Travel %d", i];
-            dream.subCategory = subCategories[i];
-    
-            NSMutableArray *layers = [NSMutableArray arrayWithCapacity:3];
-            for (int j = 0; j < 3; j++) {
-                Layer *layer = [[Layer alloc] init];
-                layer.type = LayerTypePhoto;
-                layer.layerDescription = [NSString stringWithFormat:@"Skydiving %d", j];
-                layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
-                [layers addObject:layer];
-            }
-            
-            Layer *layer = [[Layer alloc] init];
-            layer.type = LayerTypePhoto;
-            layer.layerDescription = [NSString stringWithFormat:@"Skydiving %d", i];
-            layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
-    
-            User *user = [[User alloc] init];
-            user.photoURL = self.signInManager.userPhotoURL;
-            user.name = @"Cassiano Monteiro";
-    
-            dream.layers = layers;
-            dream.user = user;
-            [self.dreams addObject:dream];
-        }
+    [self startProgressAnimation];
+
+    // Create user, if it doesn't exist yet
+    [self.signInManager createUserForDelegate:self];
 }
 
 - (void)startProgressAnimation
