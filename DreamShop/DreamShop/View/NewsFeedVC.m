@@ -10,6 +10,7 @@
 #import <FontAwesomeIconFactory.h>
 #import <UIImageView+AFRKNetworking.h>
 #import "Dream.h"
+#import "NewDreamVC.h"
 #import "DreamDetailVC.h"
 #import "AlertControllerFactory.h"
 #import "SignInManager.h"
@@ -68,6 +69,10 @@
         DreamDetailVC *destinationVC = segue.destinationViewController;
         destinationVC.dream = self.dreams[self.tableView.indexPathForSelectedRow.row];
     }
+    else if ([segue.destinationViewController isKindOfClass:[NewDreamVC class]]) {
+        NewDreamVC *destinationVC = segue.destinationViewController;
+        destinationVC.user = self.signInManager.user;
+    }
     
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:NO];
 }
@@ -84,17 +89,6 @@
     }
     
     [self refreshLoginButton];
-}
-
-- (IBAction)postTapped:(UIBarButtonItem *)sender
-{
-    UIAlertController *alertController =
-    [AlertControllerFactory photoSourceAlertControllerForViewController:self
-                                                          withImageSize:self.photoImageView.frame.size
-                                                      completionHandler:^(UIImage *image) {
-        self.photoImageView.image = image;
-    }];
-    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -147,8 +141,8 @@
     UIImage *userImage = [factory createImageForIcon:NIKFontAwesomeIconUser];
     
     cell.cellImageView.image = nil;
-    if (self.signInManager.userPhotoURL) {
-        [cell.cellImageView setImageWithURL:self.signInManager.userPhotoURL placeholderImage:userImage];
+    if (self.signInManager.user.photoURL) {
+        [cell.cellImageView setImageWithURL:self.signInManager.user.photoURL placeholderImage:userImage];
     }
     else {
         cell.cellImageView.image = userImage;

@@ -21,7 +21,7 @@
 @property (nonatomic, weak) id<SignInManagerDelegate> delegate;
 
 @property (nonatomic, readonly) BOOL userIsSignedIn;
-@property (nonatomic, readonly) NSURL *userPhotoURL;
+@property (nonatomic, readonly) User *user;
 
 /**
  * Shows sign-in screen if user not logged in

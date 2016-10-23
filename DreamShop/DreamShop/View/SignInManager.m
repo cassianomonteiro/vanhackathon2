@@ -41,9 +41,14 @@
     return (self.auth.currentUser && !self.auth.currentUser.isAnonymous);
 }
 
-- (NSURL *)userPhotoURL
+- (User *)user
 {
-    return self.auth.currentUser.photoURL;
+    User *user = [[User alloc] init];
+    user.name = self.auth.currentUser.displayName;
+    user.photoURL = self.auth.currentUser.photoURL;
+    user.firebaseKey = self.auth.currentUser.uid;
+    
+    return user;
 }
 
 - (void)checkLoginForViewController:(UIViewController *)viewController animated:(BOOL)animated
@@ -96,11 +101,7 @@
 
 - (void)createUserForDelegate:(id<ConnectionManagerDelegate>)delegate
 {
-    User *user = [[User alloc] init];
-    user.name = self.auth.currentUser.displayName;
-    user.photoURL = self.auth.currentUser.photoURL;
-    user.firebaseKey = self.auth.currentUser.uid;
-    [[ConnectionManager defaultManager] requestUserCreation:user forDelegate:delegate];
+    [[ConnectionManager defaultManager] requestUserCreation:self.user forDelegate:delegate];
 }
 
 #pragma mark - <FIRAuthUIDelegate>
