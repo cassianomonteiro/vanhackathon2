@@ -13,14 +13,14 @@
 #import "NewDreamVC.h"
 #import "DreamDetailVC.h"
 #import "AlertControllerFactory.h"
+#import "NewsFeedTVC.h"
 #import "SignInManager.h"
-#import "DreamCell.h"
-#import "SimpleImageCell.h"
 #import "ConnectionManager.h"
 
-@interface NewsFeedVC () <UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate, SignInManagerDelegate>
+@interface NewsFeedVC () <ConnectionManagerDelegate, SignInManagerDelegate>
 @property (nonatomic, strong) SignInManager *signInManager;
-@property (nonatomic, strong) NSMutableArray<Dream *> *dreams;
+@property (nonatomic, strong) NSArray<Dream *> *dreams;
+@property (nonatomic, strong) NewsFeedTVC *newsFeedTVC;
 @end
 
 @implementation NewsFeedVC
@@ -35,12 +35,19 @@
     self.signInManager = [[SignInManager alloc] init];
     self.signInManager.delegate = self;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.dreams = [NSMutableArray array];
+    self.dreams = [NSArray array];
+    
+    // Initialize TableViewController
+    self.newsFeedTVC = [[NewsFeedTVC alloc] initWithTableView:self.tableView];
+    [self addChildViewController:self.newsFeedTVC];
+    [self.newsFeedTVC didMoveToParentViewController:self];
+    self.newsFeedTVC.dreams = self.dreams;
+    self.newsFeedTVC.signInManager = self.signInManager;
     
     // Initialize Refresh Control
-//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-//    [refreshControl addTarget:self action:@selector(loadDreams) forControlEvents:UIControlEventValueChanged];
-//    [self setRefreshControl:refreshControl];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(loadDreams) forControlEvents:UIControlEventValueChanged];
+    [self.newsFeedTVC setRefreshControl:refreshControl];
     
     [self.signInManager checkLoginForViewController:self animated:NO];
 }
@@ -95,101 +102,6 @@
     [self refreshLoginButton];
 }
 
-#pragma mark - <UITableViewDataSource>
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    switch (section) {
-        case 0: // Section "What is your dream?"
-            return 1;
-            break;
-        case 1: // Section with dreams news need
-            return self.dreams.count;
-            break;
-        default:
-            return 0;
-            break;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case 0:
-            return [self tableView:tableView userDreamCellForRowAtIndexPath:indexPath];
-            break;
-        case 1:
-            return [DreamCell dequeueCellFromTableView:tableView withDream:self.dreams[indexPath.row]];
-            break;
-        default:
-            return [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            break;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView userDreamCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    SimpleImageCell *cell = [tableView dequeueReusableCellWithIdentifier:[SimpleImageCell cellID]];
-    
-    if (!cell) {
-        cell = [[SimpleImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[SimpleImageCell cellID]];
-    }
-    
-    NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory buttonIconFactory];
-    factory.size = [SimpleImageCell cellHeight];
-    UIImage *userImage = [factory createImageForIcon:NIKFontAwesomeIconUser];
-    
-    cell.cellImageView.image = nil;
-    if (self.signInManager.user.photoURL) {
-        [cell.cellImageView setImageWithURL:self.signInManager.user.photoURL placeholderImage:userImage];
-    }
-    else {
-        cell.cellImageView.image = userImage;
-    }
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    switch (section) {
-        case 0:
-            return 4.f;
-            break;
-        case 1:
-            return 1.f;
-        default:
-            return 0.f;
-            break;
-    }
-}
-
-#pragma mark - <UITableViewDelegate>
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case 0:
-            return 77.f;
-            break;
-        case 1:
-            return [DreamCell cellHeight];
-        default:
-            return 0;
-            break;
-    }
-}
-
 #pragma mark - <ConnectionManagerDelegate>
 
 - (void)connectionManager:(ConnectionManager *)manager didCompleteRequestWithReturnedObjects:(NSArray *)objects
@@ -199,7 +111,7 @@
         [[ConnectionManager defaultManager] requestDreamsFeedForDelegate:self];
     }
     else if (objects && objects.count > 0 && [objects.firstObject isKindOfClass:[Dream class]]) {
-        self.dreams = [objects mutableCopy];
+        self.dreams = objects;
         [self stopProgressAnimation];
     }
     else {
@@ -209,7 +121,7 @@
 
 - (void)connectionManager:(ConnectionManager *)manager didFailRequestWithError:(NSError *)error
 {
-    self.dreams = [NSMutableArray array];
+    self.dreams = [NSArray array];
     [self stopProgressAnimation];
 }
 
@@ -222,7 +134,7 @@
 
 - (void)signInManagerDidSignOut:(id)manager
 {
-    self.dreams = [NSMutableArray array];
+    self.dreams = [NSArray array];
 }
 
 #pragma mark - Helpers
@@ -233,6 +145,12 @@
 
     // Create user, if it doesn't exist yet
     [self.signInManager createUserForDelegate:self];
+}
+
+- (void)setDreams:(NSArray<Dream *> *)dreams
+{
+    _dreams = dreams;
+    self.newsFeedTVC.dreams = dreams;
 }
 
 - (void)startProgressAnimation
@@ -246,6 +164,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self.activityIndicator stopAnimating];
+        [self.newsFeedTVC.refreshControl endRefreshing];
         [self.tableView reloadData];
     });
 }

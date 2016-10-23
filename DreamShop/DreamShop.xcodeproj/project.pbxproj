@@ -81,6 +81,7 @@
 		F0E28B351DBC759C00456856 /* LayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B341DBC759C00456856 /* LayerTests.m */; };
 		F0E28B371DBC7C5800456856 /* AllDreams.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B361DBC7C5800456856 /* AllDreams.json */; };
 		F0E28B3A1DBC954200456856 /* NewDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B391DBC954200456856 /* NewDreamVC.m */; };
+		F0E28B3E1DBCCA3500456856 /* NewsFeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,8 @@
 		F0E28B361DBC7C5800456856 /* AllDreams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllDreams.json; sourceTree = "<group>"; };
 		F0E28B381DBC954200456856 /* NewDreamVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDreamVC.h; sourceTree = "<group>"; };
 		F0E28B391DBC954200456856 /* NewDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDreamVC.m; sourceTree = "<group>"; };
+		F0E28B3C1DBCCA3500456856 /* NewsFeedTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTVC.h; sourceTree = "<group>"; };
+		F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTVC.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -343,6 +346,8 @@
 				F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */,
 				F0E28B381DBC954200456856 /* NewDreamVC.h */,
 				F0E28B391DBC954200456856 /* NewDreamVC.m */,
+				F0E28B3C1DBCCA3500456856 /* NewsFeedTVC.h */,
+				F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */,
 				F0B973761DBAF6E80066632C /* NewsFeedVC.h */,
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 				F0B973861DBB87380066632C /* SearchProductsVC.h */,
@@ -789,6 +794,7 @@
 				F0B973E61DBB95C80066632C /* NavigationController.m in Sources */,
 				F0B974071DBB969F0066632C /* Theme.m in Sources */,
 				F0B973DF1DBB95C80066632C /* OptionBreadCrumbsView.m in Sources */,
+				F0E28B3E1DBCCA3500456856 /* NewsFeedTVC.m in Sources */,
 				F0B973CF1DBB95C70066632C /* ErrorView.m in Sources */,
 				F0B9734D1DBAF3350066632C /* main.m in Sources */,
 				F0B974021DBB969F0066632C /* ImageKit.m in Sources */,
