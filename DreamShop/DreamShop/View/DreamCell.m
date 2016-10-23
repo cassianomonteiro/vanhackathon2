@@ -46,18 +46,15 @@
     cell.userImageView.image = nil;
     cell.categoryImageView.image = nil;
     
-//    [cell.dreamImageView setImageWithURL:dream.layers.firstObject.layerURL];
+    [cell.userImageView setImageWithURL:dream.user.photoURL];
+    [cell.categoryImageView setImage:[UIImage imageNamed:dream.subCategory]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:dream.layers.firstObject.layerURL];
-    
     [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.dreamImageView.image = [self adjustedImage:image forSize:cell.dreamImageView.frame.size];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         cell.dreamImageView.image = nil;
     }];
-    
-    [cell.userImageView setImageWithURL:dream.user.photoURL];
-    [cell.categoryImageView setImage:[UIImage imageNamed:dream.subCategory]];
     
     cell.dreamDescriptionLabel.text = dream.layers.firstObject.layerDescription;
     cell.userNameLabel.text = dream.user.name;

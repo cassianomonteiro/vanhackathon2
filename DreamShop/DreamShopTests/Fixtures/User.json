@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "name": "John Doe",
+    "firebase_key": "123123",
+    "photo_url": "http://www.photo.com",
+    "createdAt": "2016-10-22T21:53:03.202Z",
+    "updatedAt": "2016-10-22T21:53:03.202Z"
+}

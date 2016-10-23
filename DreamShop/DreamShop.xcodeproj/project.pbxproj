@@ -14,7 +14,6 @@
 		F0B973561DBAF3350066632C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B973541DBAF3350066632C /* Main.storyboard */; };
 		F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F0B973571DBAF3350066632C /* DreamShop.xcdatamodeld */; };
 		F0B9735B1DBAF3350066632C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B9735A1DBAF3350066632C /* Assets.xcassets */; };
-		F0B973691DBAF3350066632C /* DreamShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973681DBAF3350066632C /* DreamShopTests.m */; };
 		F0B973741DBAF4100066632C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B973731DBAF4100066632C /* GoogleService-Info.plist */; };
 		F0B973781DBAF6E80066632C /* NewsFeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973771DBAF6E80066632C /* NewsFeedVC.m */; };
 		F0B9737B1DBB125B0066632C /* AlertControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */; };
@@ -69,6 +68,11 @@
 		F0B974181DBC09310066632C /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974171DBC09310066632C /* Dream.m */; };
 		F0B9741B1DBC09860066632C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9741A1DBC09860066632C /* User.m */; };
 		F0B9741E1DBC0A090066632C /* Layer.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9741D1DBC0A090066632C /* Layer.m */; };
+		F0B974231DBC38F60066632C /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974221DBC38F60066632C /* ConnectionManager.m */; };
+		F0B974251DBC391B0066632C /* ConnectionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974241DBC391B0066632C /* ConnectionManagerTests.m */; };
+		F0B974301DBC39340066632C /* Server.rb in Resources */ = {isa = PBXBuildFile; fileRef = F0B974291DBC39340066632C /* Server.rb */; };
+		F0B974321DBC39340066632C /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B9742C1DBC39340066632C /* User.json */; };
+		F0E28B281DBC3AEF00456856 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B271DBC3AEF00456856 /* UserTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +100,6 @@
 		F0B9735A1DBAF3350066632C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0B9735F1DBAF3350066632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0B973641DBAF3350066632C /* DreamShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DreamShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0B973681DBAF3350066632C /* DreamShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DreamShopTests.m; sourceTree = "<group>"; };
 		F0B9736A1DBAF3350066632C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0B973731DBAF4100066632C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0B973761DBAF6E80066632C /* NewsFeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedVC.h; sourceTree = "<group>"; };
@@ -203,6 +206,12 @@
 		F0B9741A1DBC09860066632C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F0B9741C1DBC0A090066632C /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
 		F0B9741D1DBC0A090066632C /* Layer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layer.m; sourceTree = "<group>"; };
+		F0B974211DBC38F60066632C /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
+		F0B974221DBC38F60066632C /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		F0B974241DBC391B0066632C /* ConnectionManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManagerTests.m; sourceTree = "<group>"; };
+		F0B974291DBC39340066632C /* Server.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Server.rb; sourceTree = "<group>"; };
+		F0B9742C1DBC39340066632C /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		F0E28B271DBC3AEF00456856 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B9737C1DBB19510066632C /* lib */,
+				F0B9741F1DBC388C0066632C /* Business */,
 				F0B974151DBC08EF0066632C /* Model */,
 				F0B973751DBAF6C10066632C /* View */,
 				F0B9734E1DBAF3350066632C /* AppDelegate.h */,
@@ -296,7 +306,9 @@
 		F0B973671DBAF3350066632C /* DreamShopTests */ = {
 			isa = PBXGroup;
 			children = (
-				F0B973681DBAF3350066632C /* DreamShopTests.m */,
+				F0B974261DBC39340066632C /* Fixtures */,
+				F0B974201DBC38BA0066632C /* Business */,
+				F0E28B261DBC3AB500456856 /* Model */,
 				F0B9736A1DBAF3350066632C /* Info.plist */,
 			);
 			path = DreamShopTests;
@@ -482,6 +494,40 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		F0B9741F1DBC388C0066632C /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				F0B974211DBC38F60066632C /* ConnectionManager.h */,
+				F0B974221DBC38F60066632C /* ConnectionManager.m */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		F0B974201DBC38BA0066632C /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				F0B974241DBC391B0066632C /* ConnectionManagerTests.m */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		F0B974261DBC39340066632C /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				F0B974291DBC39340066632C /* Server.rb */,
+				F0B9742C1DBC39340066632C /* User.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		F0E28B261DBC3AB500456856 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0E28B271DBC3AEF00456856 /* UserTests.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -584,6 +630,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B974321DBC39340066632C /* User.json in Resources */,
+				F0B974301DBC39340066632C /* Server.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +782,7 @@
 				F0B973D61DBB95C70066632C /* ProductVariantCell.m in Sources */,
 				F0B973E31DBB95C80066632C /* VariantOptionView.m in Sources */,
 				F0B973CD1DBB95C70066632C /* CheckoutButton.m in Sources */,
+				F0B974231DBC38F60066632C /* ConnectionManager.m in Sources */,
 				F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */,
 				F0B973D51DBB95C70066632C /* ProductImageCell.m in Sources */,
 				F0B9737B1DBB125B0066632C /* AlertControllerFactory.m in Sources */,
@@ -748,7 +797,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0B973691DBAF3350066632C /* DreamShopTests.m in Sources */,
+				F0E28B281DBC3AEF00456856 /* UserTests.m in Sources */,
+				F0B974251DBC391B0066632C /* ConnectionManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
