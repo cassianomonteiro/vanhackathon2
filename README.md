@@ -32,6 +32,7 @@ The following products were delivered at the end of the Hackathon:
 * Backend API: https://github.com/taylorrf/dreamwishlist_api
 * Backend API documentation: https://dreamwishlist-api.herokuapp.com
 * iOS sample video: https://youtu.be/21728hNrxsI
+* Android sample video: https://youtu.be/8aYSKTKC4gY
 
 ##Personal achievement
 I was very happy and excited about participating on this virtual hackathon. I had never been to a hackathon before, and I was really surprised on what I could deliver within those 48 hours.
