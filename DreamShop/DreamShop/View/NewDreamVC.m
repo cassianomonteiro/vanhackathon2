@@ -40,12 +40,16 @@
 {
     SearchProductsVC *sourceVC = segue.sourceViewController;
     self.selectedProduct = sourceVC.selectedProduct;
-    
+    [self updateImageWithShopifyProduct];
+}
+
+- (void)updateImageWithShopifyProduct
+{
     if (!self.photoImageView.image && self.selectedProduct.images && self.selectedProduct.images.count > 0) {
         BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
         [self.photoImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize1024x1024]];
     }
-    else {
+    else if (self.photoImageView.image) {
         [self addProductImageToImageView:self.photoImageView];
     }
     
@@ -54,30 +58,34 @@
 
 - (void)addShopifyIconToImageView:(UIImageView *)imageView
 {
-    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
-                                  imageView.frame.size.height - 38.f,
-                                  30.f,
-                                  30.f);
-    
-    UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
-    shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
-    shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
-    [imageView addSubview:shopifyImageView];
+    if (self.selectedProduct) {
+        CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
+                                      imageView.frame.size.height - 38.f,
+                                      30.f,
+                                      30.f);
+        
+        UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+        shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
+        shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
+        [imageView addSubview:shopifyImageView];
+    }
 }
 
 - (void)addProductImageToImageView:(UIImageView *)imageView
 {
-    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 76.f,
-                                  imageView.frame.size.height - 38.f,
-                                  30.f,
-                                  30.f);
-    
-    BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
-    UIImageView *productImageView = [[UIImageView alloc] initWithFrame:iconFrame];
-    productImageView.contentMode = UIViewContentModeScaleAspectFit;
-    productImageView.backgroundColor = [UIColor whiteColor];
-    [productImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize100x100]];
-    [imageView addSubview:productImageView];
+    if (self.selectedProduct.images && self.selectedProduct.images.count > 0) {
+        CGRect iconFrame = CGRectMake(imageView.frame.size.width - 76.f,
+                                      imageView.frame.size.height - 38.f,
+                                      30.f,
+                                      30.f);
+        
+        BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
+        UIImageView *productImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+        productImageView.contentMode = UIViewContentModeScaleAspectFit;
+        productImageView.backgroundColor = [UIColor whiteColor];
+        [productImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize100x100]];
+        [imageView addSubview:productImageView];
+    }
 }
 
 /*
@@ -136,8 +144,21 @@
                                                           withImageSize:self.photoImageView.frame.size
                                                       completionHandler:^(UIImage *image) {
                                                           self.photoImageView.image = image;
+                                                          [self addProductImageToImageView:self.photoImageView];
                                                       }];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)setPhotoImage:(UIImage *)image
+{
+    // Remove any previous icons from photoImageView
+    for (UIView *view in self.photoImageView.subviews) {
+        [view removeFromSuperview];
+    }
+    
+    self.photoImageView.image = image;
+    [self addShopifyIconToImageView:self.photoImageView];
+    [self addProductImageToImageView:self.photoImageView];
 }
 
 - (IBAction)youtubeTapped:(UIButton *)sender {
