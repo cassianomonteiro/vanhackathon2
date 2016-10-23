@@ -82,6 +82,7 @@
 		F0E28B371DBC7C5800456856 /* AllDreams.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B361DBC7C5800456856 /* AllDreams.json */; };
 		F0E28B3A1DBC954200456856 /* NewDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B391DBC954200456856 /* NewDreamVC.m */; };
 		F0E28B3E1DBCCA3500456856 /* NewsFeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */; };
+		F0E28B411DBCD54800456856 /* FirebaseUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B401DBCD54800456856 /* FirebaseUploader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +234,8 @@
 		F0E28B391DBC954200456856 /* NewDreamVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDreamVC.m; sourceTree = "<group>"; };
 		F0E28B3C1DBCCA3500456856 /* NewsFeedTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTVC.h; sourceTree = "<group>"; };
 		F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTVC.m; sourceTree = "<group>"; };
+		F0E28B3F1DBCD54800456856 /* FirebaseUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseUploader.h; sourceTree = "<group>"; };
+		F0E28B401DBCD54800456856 /* FirebaseUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseUploader.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -526,6 +529,8 @@
 			children = (
 				F0B974211DBC38F60066632C /* ConnectionManager.h */,
 				F0B974221DBC38F60066632C /* ConnectionManager.m */,
+				F0E28B3F1DBCD54800456856 /* FirebaseUploader.h */,
+				F0E28B401DBCD54800456856 /* FirebaseUploader.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -791,6 +796,7 @@
 				F0B974001DBB969F0066632C /* UIFont+Additions.m in Sources */,
 				F0B973CC1DBB95C70066632C /* AsyncImageView.m in Sources */,
 				F0B973D31DBB95C70066632C /* ProductDescriptionCell.m in Sources */,
+				F0E28B411DBCD54800456856 /* FirebaseUploader.m in Sources */,
 				F0B973E61DBB95C80066632C /* NavigationController.m in Sources */,
 				F0B974071DBB969F0066632C /* Theme.m in Sources */,
 				F0B973DF1DBB95C80066632C /* OptionBreadCrumbsView.m in Sources */,

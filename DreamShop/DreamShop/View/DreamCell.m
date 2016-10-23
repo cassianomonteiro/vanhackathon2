@@ -61,7 +61,9 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:dream.layers.firstObject.layerURL];
     [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.dreamImageView.image = [self adjustedImage:image forSize:cell.dreamImageView.frame.size];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        [self checkShopifyIconForDream:dream onImageView:cell.dreamImageView];
+    }
+    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         cell.dreamImageView.image = nil;
     }];
     
@@ -84,6 +86,35 @@
                                     size.width,
                                     size.height);
     return [scaledImage croppedImage:croppedRect];
+}
+
++ (void)checkShopifyIconForDream:(Dream *)dream onImageView:(UIImageView *)imageView
+{
+    NSArray *products = [dream.layers filteredArrayUsingPredicate:
+                         [NSPredicate predicateWithFormat:@"type = %@", LayerTypeProduct]];
+    
+    if (products.count > 0) {
+        [self addShopifyIconToImageView:imageView];
+    }
+    else {
+        for (UIView *view in imageView.subviews) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
++ (void)addShopifyIconToImageView:(UIImageView *)imageView
+{
+    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
+                                  imageView.frame.size.height - 38.f,
+                                  30.f,
+                                  30.f);
+    
+    UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+    shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
+    
+    [imageView addSubview:shopifyImageView];
 }
 
 @end
