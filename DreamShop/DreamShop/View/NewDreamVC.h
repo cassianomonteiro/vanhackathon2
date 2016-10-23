@@ -35,4 +35,6 @@
 - (IBAction)youtubeTapped:(UIButton *)sender;
 - (IBAction)postTapped:(UIBarButtonItem *)sender;
 
+- (IBAction)receiveUnwindFromProductSearch:(UIStoryboardSegue *)segue;
+
 @end

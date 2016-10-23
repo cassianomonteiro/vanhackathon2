@@ -37,6 +37,11 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.dreams = [NSMutableArray array];
     
+    // Initialize Refresh Control
+//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+//    [refreshControl addTarget:self action:@selector(loadDreams) forControlEvents:UIControlEventValueChanged];
+//    [self setRefreshControl:refreshControl];
+    
     [self.signInManager checkLoginForViewController:self animated:NO];
 }
 
@@ -76,7 +81,6 @@
     
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:NO];
 }
-
 
 #pragma mark - Actions
 
@@ -235,7 +239,6 @@
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.activityIndicator startAnimating];
-    self.tableView.userInteractionEnabled = NO;
 }
 
 - (void)stopProgressAnimation
@@ -243,7 +246,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [self.activityIndicator stopAnimating];
-        self.tableView.userInteractionEnabled = YES;
         [self.tableView reloadData];
     });
 }

@@ -9,10 +9,12 @@
 #import "NewDreamVC.h"
 #import <FontAwesomeIconFactory.h>
 #import <UIImageView+AFRKNetworking.h>
+#import "SearchProductsVC.h"
 #import "AlertControllerFactory.h"
 #import "Dream.h"
 
 @interface NewDreamVC () <UITextFieldDelegate>
+@property (nonatomic, strong) BUYProduct *selectedProduct;
 @end
 
 @implementation NewDreamVC
@@ -30,6 +32,52 @@
     [self setUpGestureRecognizers];
     
     self.postButton.enabled = NO;
+}
+
+#pragma mark - Navigation
+
+- (void)receiveUnwindFromProductSearch:(UIStoryboardSegue *)segue
+{
+    SearchProductsVC *sourceVC = segue.sourceViewController;
+    self.selectedProduct = sourceVC.selectedProduct;
+    
+    if (!self.photoImageView.image && self.selectedProduct.images && self.selectedProduct.images.count > 0) {
+        BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
+        [self.photoImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize1024x1024]];
+    }
+    else {
+        [self addProductImageToImageView:self.photoImageView];
+    }
+    
+    [self addShopifyIconToImageView:self.photoImageView];
+}
+
+- (void)addShopifyIconToImageView:(UIImageView *)imageView
+{
+    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
+                                  imageView.frame.size.height - 38.f,
+                                  30.f,
+                                  30.f);
+    
+    UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+    shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
+    shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
+    [imageView addSubview:shopifyImageView];
+}
+
+- (void)addProductImageToImageView:(UIImageView *)imageView
+{
+    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 76.f,
+                                  imageView.frame.size.height - 38.f,
+                                  30.f,
+                                  30.f);
+    
+    BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
+    UIImageView *productImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+    productImageView.contentMode = UIViewContentModeScaleAspectFit;
+    productImageView.backgroundColor = [UIColor whiteColor];
+    [productImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize100x100]];
+    [imageView addSubview:productImageView];
 }
 
 /*
@@ -60,6 +108,7 @@
 {
     UIImageView *imageView = (UIImageView *)sender.view;
     self.selectedSubCategory.text = self.subCategoriesNames[[self.subCategories indexOfObject:imageView]].capitalizedString;
+    self.selectedSubCategoryImageView.image = imageView.image;
     
     for (UIImageView *subCategory in self.subCategories) {
         subCategory.alpha = (subCategory == imageView) ? 1.f : 0.3f;
@@ -86,9 +135,7 @@
     [AlertControllerFactory photoSourceAlertControllerForViewController:self
                                                           withImageSize:self.photoImageView.frame.size
                                                       completionHandler:^(UIImage *image) {
-                                                          NSLog(@"%@", self.photoImageView);
                                                           self.photoImageView.image = image;
-                                                          NSLog(@"%@", self.photoImageView);
                                                       }];
     [self presentViewController:alertController animated:YES completion:nil];
 }

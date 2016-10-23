@@ -250,57 +250,57 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popular" translatesAutoresizingMaskIntoConstraints="NO" id="xJS-RG-e3N">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="TyK-dF-Qms"/>
+                                    <constraint firstAttribute="height" constant="30" id="TyK-dF-Qms"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travel" translatesAutoresizingMaskIntoConstraints="NO" id="Uu3-A4-xWN">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="eea-pD-dpT"/>
+                                    <constraint firstAttribute="height" constant="30" id="eea-pD-dpT"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="outdoor" translatesAutoresizingMaskIntoConstraints="NO" id="9kt-9V-kof">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mvI-MN-7c7"/>
+                                    <constraint firstAttribute="height" constant="30" id="mvI-MN-7c7"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sports" translatesAutoresizingMaskIntoConstraints="NO" id="BIG-pT-1DG">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Qvt-5E-wLz"/>
+                                    <constraint firstAttribute="height" constant="30" id="Qvt-5E-wLz"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="products" translatesAutoresizingMaskIntoConstraints="NO" id="dFS-KQ-Lpx">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OMN-gS-QUv"/>
+                                    <constraint firstAttribute="height" constant="30" id="OMN-gS-QUv"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="others" translatesAutoresizingMaskIntoConstraints="NO" id="OeL-FQ-AzX">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="HY4-oN-gWK"/>
+                                    <constraint firstAttribute="height" constant="30" id="HY4-oN-gWK"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="beach" translatesAutoresizingMaskIntoConstraints="NO" id="A7E-6H-6Y7">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Sg3-kI-OQa"/>
+                                    <constraint firstAttribute="height" constant="30" id="Sg3-kI-OQa"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camping" translatesAutoresizingMaskIntoConstraints="NO" id="wfO-dD-c0v">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="3fb-TT-L0L"/>
+                                    <constraint firstAttribute="height" constant="30" id="3fb-TT-L0L"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="adventure" translatesAutoresizingMaskIntoConstraints="NO" id="SD8-Sp-tz6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="x9x-wv-MOe"/>
+                                    <constraint firstAttribute="height" constant="30" id="x9x-wv-MOe"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="desert" translatesAutoresizingMaskIntoConstraints="NO" id="Wp1-LF-aNb">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="hcZ-Jg-1B1"/>
+                                    <constraint firstAttribute="height" constant="30" id="hcZ-Jg-1B1"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tourism" translatesAutoresizingMaskIntoConstraints="NO" id="AAI-4C-zn8">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="YoY-ng-ULW"/>
+                                    <constraint firstAttribute="height" constant="30" id="YoY-ng-ULW"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="others" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-Rs-jzr">
@@ -327,7 +327,7 @@
                                     <outlet property="delegate" destination="U7p-f1-JMW" id="EEP-1E-sMZ"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j41-Tn-1G9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j41-Tn-1G9">
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j41-Tn-1G9" secondAttribute="height" multiplier="1:1" id="Qh0-qD-CsM"/>
                                 </constraints>
@@ -384,7 +384,7 @@
                             <constraint firstItem="AAI-4C-zn8" firstAttribute="width" secondItem="A7E-6H-6Y7" secondAttribute="width" id="2Ak-nW-nk5"/>
                             <constraint firstItem="AAI-4C-zn8" firstAttribute="leading" secondItem="Wp1-LF-aNb" secondAttribute="trailing" constant="8" id="2Zx-7s-vhp"/>
                             <constraint firstItem="dFS-KQ-Lpx" firstAttribute="width" secondItem="xJS-RG-e3N" secondAttribute="width" id="3E8-3V-Rcc"/>
-                            <constraint firstItem="j41-Tn-1G9" firstAttribute="top" secondItem="0yL-7X-juF" secondAttribute="bottom" constant="8" id="5Fp-Sg-t7j"/>
+                            <constraint firstItem="j41-Tn-1G9" firstAttribute="top" secondItem="0yL-7X-juF" secondAttribute="bottom" constant="20" id="5Fp-Sg-t7j"/>
                             <constraint firstItem="Qq7-fr-Xod" firstAttribute="centerY" secondItem="t6V-bB-wpH" secondAttribute="centerY" id="7eZ-zK-VH2"/>
                             <constraint firstItem="BIG-pT-1DG" firstAttribute="width" secondItem="xJS-RG-e3N" secondAttribute="width" id="8Kp-ar-lWv"/>
                             <constraint firstItem="kRI-0m-Ogl" firstAttribute="width" secondItem="t6V-bB-wpH" secondAttribute="width" id="A7g-ge-apu"/>
@@ -672,11 +672,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SimpleImageCell" id="IYe-Md-4dF" customClass="SimpleImageCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="SimpleImageCell" id="IYe-Md-4dF" customClass="SimpleImageCell">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IYe-Md-4dF" id="gZm-fb-YpL">
-                                    <frame key="frameInset" width="342" height="43"/>
+                                    <frame key="frameInset" width="308" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6aP-Ox-s4B">
@@ -702,6 +702,7 @@
                                 <connections>
                                     <outlet property="cellImageView" destination="6aP-Ox-s4B" id="XC8-hZ-beR"/>
                                     <outlet property="cellTitle" destination="Uaw-TY-BDh" id="VPy-2z-gDv"/>
+                                    <segue destination="Iqy-cK-8RI" kind="unwind" unwindAction="receiveUnwindFromProductSearch:" id="FuF-b6-l1l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -722,6 +723,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tye-MW-9ol" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Iqy-cK-8RI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3598" y="136"/>
         </scene>

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Buy/Buy.h>
 
 @interface SearchProductsVC : UITableViewController
+
+@property (nonatomic, strong) BUYProduct *selectedProduct;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 - (IBAction)cancelTapped:(UIBarButtonItem *)sender;
 @end
