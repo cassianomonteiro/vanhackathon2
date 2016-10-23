@@ -76,6 +76,7 @@
 		F0E28B2A1DBC447A00456856 /* Dream.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B291DBC447A00456856 /* Dream.json */; };
 		F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B2B1DBC448D00456856 /* DreamsResponse.json */; };
 		F0E28B2E1DBC44FE00456856 /* DreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B2D1DBC44FE00456856 /* DreamTests.m */; };
+		F0E28B311DBC5CDC00456856 /* DreamDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,8 @@
 		F0E28B291DBC447A00456856 /* Dream.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dream.json; sourceTree = "<group>"; };
 		F0E28B2B1DBC448D00456856 /* DreamsResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DreamsResponse.json; sourceTree = "<group>"; };
 		F0E28B2D1DBC44FE00456856 /* DreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTests.m; sourceTree = "<group>"; };
+		F0E28B2F1DBC5CDC00456856 /* DreamDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamDetailVC.h; sourceTree = "<group>"; };
+		F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamDetailVC.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -327,6 +330,8 @@
 				F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */,
 				F0B974121DBC05A20066632C /* DreamCell.h */,
 				F0B974131DBC05A20066632C /* DreamCell.m */,
+				F0E28B2F1DBC5CDC00456856 /* DreamDetailVC.h */,
+				F0E28B301DBC5CDC00456856 /* DreamDetailVC.m */,
 				F0B973761DBAF6E80066632C /* NewsFeedVC.h */,
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 				F0B973861DBB87380066632C /* SearchProductsVC.h */,
@@ -777,6 +782,7 @@
 				F0B973D01DBB95C70066632C /* GradientView.m in Sources */,
 				F0B973D81DBB95C80066632C /* ProductViewController.m in Sources */,
 				F0B9741B1DBC09860066632C /* User.m in Sources */,
+				F0E28B311DBC5CDC00456856 /* DreamDetailVC.m in Sources */,
 				F0B973D91DBB95C80066632C /* ProductViewControllerThemeStyleTableViewCell.m in Sources */,
 				F0B974181DBC09310066632C /* Dream.m in Sources */,
 				F0B9741E1DBC0A090066632C /* Layer.m in Sources */,

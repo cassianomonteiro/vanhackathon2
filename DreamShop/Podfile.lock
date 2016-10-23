@@ -126,6 +126,7 @@ PODS:
     - Fabric
   - TwitterKit (2.5.0):
     - TwitterCore (= 2.5.0)
+  - UPCardsCarousel (1.0.2)
 
 DEPENDENCIES:
   - Firebase/Crash
@@ -140,6 +141,7 @@ DEPENDENCIES:
   - OCMock
   - RestKit
   - RestKit/Testing
+  - UPCardsCarousel
 
 EXTERNAL SOURCES:
   FirebaseAuthUI:
@@ -206,7 +208,8 @@ SPEC CHECKSUMS:
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   TwitterCore: 95c46af93112768a7983bd370d66023553601d01
   TwitterKit: dd8042698b0ff5bd3066fa919b3b2b50d8eed829
+  UPCardsCarousel: 7a18369f3c383a11e1ead2d61000286d542631d2
 
-PODFILE CHECKSUM: 770948989b82aa1f11c18473544505334d2e025e
+PODFILE CHECKSUM: d39c473747d10a961e9dc8866e02b80b89e62568
 
 COCOAPODS: 1.0.1

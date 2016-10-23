@@ -30,7 +30,7 @@
 
 + (CGFloat)cellHeight
 {
-    return 343.f;
+    return 344.f;
 }
 
 + (DreamCell *)dequeueCellFromTableView:(UITableView *)tableView withDream:(Dream *)dream

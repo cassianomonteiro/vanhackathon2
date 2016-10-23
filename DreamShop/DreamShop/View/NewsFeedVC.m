@@ -10,6 +10,7 @@
 #import <FontAwesomeIconFactory.h>
 #import <UIImageView+AFRKNetworking.h>
 #import "Dream.h"
+#import "DreamDetailVC.h"
 #import "AlertControllerFactory.h"
 #import "SignInManager.h"
 #import "DreamCell.h"
@@ -36,36 +37,6 @@
     self.dreams = [NSMutableArray array];
     
     [self.signInManager checkLoginForViewController:self animated:NO];
-//    [self loadDreams];
-    
-    // Mock dreams
-//    NSArray<NSString *> *subCategories = @[SubCategoryBeach,
-//                                           SubCategoryDesert,
-//                                           SubCategoryCamping,
-//                                           SubCategoryTourism,
-//                                           SubCategoryAdventure];
-//    
-//    self.dreams = [NSMutableArray arrayWithCapacity:5];
-//    
-//    for (int i = 0; i<5; i++) {
-//        Dream *dream = [[Dream alloc] init];
-//        dream.dreamId = @(i);
-//        dream.category = @"Travel";
-//        dream.subCategory = subCategories[i];
-//        
-//        Layer *layer = [[Layer alloc] init];
-//        layer.type = LayerTypePhoto;
-//        layer.layerDescription = @"Skydiving";
-//        layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
-//        
-//        User *user = [[User alloc] init];
-//        user.photoURL = self.signInDelegate.userPhotoURL;
-//        user.name = @"Cassiano Monteiro";
-//        
-//        dream.layers = @[layer];
-//        dream.user = user;
-//        [self.dreams addObject:dream];
-//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,15 +59,19 @@
     }
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[DreamDetailVC class]]) {
+        DreamDetailVC *destinationVC = segue.destinationViewController;
+        destinationVC.dream = self.dreams[self.tableView.indexPathForSelectedRow.row];
+    }
+    
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:NO];
 }
-*/
+
 
 #pragma mark - Actions
 
@@ -256,10 +231,49 @@
 
 - (void)loadDreams
 {
-    [self startProgressAnimation];
+//    [self startProgressAnimation];
+//    
+//    // Create user, if it doesn't exist yet
+//    [self.signInManager createUserForDelegate:self];
     
-    // Create user, if it doesn't exist yet
-    [self.signInManager createUserForDelegate:self];
+    
+//     Mock dreams
+        NSArray<NSString *> *subCategories = @[SubCategoryBeach,
+                                               SubCategoryDesert,
+                                               SubCategoryCamping,
+                                               SubCategoryTourism,
+                                               SubCategoryAdventure];
+    
+        self.dreams = [NSMutableArray arrayWithCapacity:5];
+    
+        for (int i = 0; i<5; i++) {
+            Dream *dream = [[Dream alloc] init];
+            dream.dreamId = @(i);
+            dream.category = [NSString stringWithFormat:@"Travel %d", i];
+            dream.subCategory = subCategories[i];
+    
+            NSMutableArray *layers = [NSMutableArray arrayWithCapacity:3];
+            for (int j = 0; j < 3; j++) {
+                Layer *layer = [[Layer alloc] init];
+                layer.type = LayerTypePhoto;
+                layer.layerDescription = [NSString stringWithFormat:@"Skydiving %d", j];
+                layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
+                [layers addObject:layer];
+            }
+            
+            Layer *layer = [[Layer alloc] init];
+            layer.type = LayerTypePhoto;
+            layer.layerDescription = [NSString stringWithFormat:@"Skydiving %d", i];
+            layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
+    
+            User *user = [[User alloc] init];
+            user.photoURL = self.signInManager.userPhotoURL;
+            user.name = @"Cassiano Monteiro";
+    
+            dream.layers = layers;
+            dream.user = user;
+            [self.dreams addObject:dream];
+        }
 }
 
 - (void)startProgressAnimation
