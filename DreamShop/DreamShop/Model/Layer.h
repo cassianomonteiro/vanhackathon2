@@ -13,6 +13,8 @@ static NSString *LayerTypePhoto = @"photo";
 static NSString *LayerTypeVideo = @"video";
 static NSString *LayerTypeProduct = @"product";
 
+@class Dream;
+
 @interface Layer : NSObject
 
 @property (nonatomic, strong) NSNumber *layerId;
@@ -20,6 +22,7 @@ static NSString *LayerTypeProduct = @"product";
 @property (nonatomic, strong) NSString *layerDescription;
 @property (nonatomic, strong) NSURL *layerURL;
 @property (nonatomic, strong) NSNumber *productId;
+@property (nonatomic, strong) Dream *dream;
 
 /**
  * Mapping object for object properties into json attributes

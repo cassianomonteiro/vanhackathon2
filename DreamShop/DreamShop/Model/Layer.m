@@ -19,7 +19,10 @@
 + (RKObjectMapping *)requestMapping
 {
     // User inverse mapping for object property -> json attribute
-    return [[self responseMapping] inverseMapping];
+    RKObjectMapping *mapping = [[self responseMapping] inverseMapping];
+    [mapping addAttributeMappingsFromDictionary:@{@"dream.dreamId" : @"dream_id"}];
+    
+    return mapping;
 }
 
 + (RKObjectMapping *)responseMapping

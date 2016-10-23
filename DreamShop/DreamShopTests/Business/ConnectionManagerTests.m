@@ -134,6 +134,60 @@
     }];
 }
 
+- (void)testRequestDreamCreation
+{
+    [self evaluateRequestBlock:^{
+        
+        // Given
+        Dream *dream = [[Dream alloc] init];
+        dream.category = @"sport";
+        dream.subCategory = @"football";
+        self.manager.firebaseKey = @"abcde";
+        
+        // When
+        [self.manager requestDreamCreation:dream forDelegate:self.delegateMock];
+        
+    } withEvaluationBlock:^(NSArray *returnedObjects) {
+        
+        XCTAssertEqual(returnedObjects.count, 1);
+        XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[Dream class]]);
+        Dream *createdDream = returnedObjects.firstObject;
+        XCTAssertEqualObjects(createdDream.dreamId, @1);
+        XCTAssertEqualObjects(createdDream.category, @"movie");
+        XCTAssertEqualObjects(createdDream.subCategory, @"inception");
+    }];
+}
+
+- (void)testRequestLayerCreation
+{
+    [self evaluateRequestBlock:^{
+        
+        // Given
+        Layer *layer = [[Layer alloc] init];
+        layer.dream = [[Dream alloc] init];
+        layer.dream.dreamId = @10;
+        layer.type = @"photo";
+        layer.layerDescription = @"layerDescription";
+        layer.layerURL = [NSURL URLWithString:@"http://url.to"];
+        layer.productId = @20;
+        self.manager.firebaseKey = @"abcde";
+        
+        // When
+        [self.manager requestLayerCreation:layer forDelegate:self.delegateMock];
+        
+    } withEvaluationBlock:^(NSArray *returnedObjects) {
+        
+        XCTAssertEqual(returnedObjects.count, 1);
+        XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[Layer class]]);
+        Layer *createdLayer = returnedObjects.firstObject;
+        XCTAssertEqualObjects(createdLayer.layerId, @3);
+        XCTAssertEqualObjects(createdLayer.type, @"product");
+        XCTAssertEqualObjects(createdLayer.layerDescription, @"Inception DVD");
+        XCTAssertEqualObjects(createdLayer.layerURL, [NSURL URLWithString:@"http://assets.ru/product.jpg"]);
+        XCTAssertEqualObjects(createdLayer.productId, @332);
+    }];
+}
+
 #pragma mark - Helpers
 
 - (void)evaluateRequestBlock:(void (^)())requestBlock withEvaluationBlock:(void(^)(NSArray *returnedObjects))evaluationBlock

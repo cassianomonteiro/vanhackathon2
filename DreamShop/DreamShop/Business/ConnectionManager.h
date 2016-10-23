@@ -37,6 +37,8 @@
 - (instancetype)initWithBaseURL:(NSURL *)baseURL;
 
 - (void)requestUserCreation:(User *)user forDelegate:(id<ConnectionManagerDelegate>)delegate;
+- (void)requestDreamCreation:(Dream *)dream forDelegate:(id<ConnectionManagerDelegate>)delegate;
+- (void)requestLayerCreation:(Layer *)layer forDelegate:(id<ConnectionManagerDelegate>)delegate;
 - (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate;
 - (void)requestDreamsFeedForDelegate:(id<ConnectionManagerDelegate>)delegate;
 

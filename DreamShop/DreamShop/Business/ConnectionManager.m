@@ -22,6 +22,7 @@ static NSString *DefaultBaseURL = @"https://dreamwishlist-api.herokuapp.com";
 
 static NSString *UserPathPattern    = @"/user";
 static NSString *DreamsPathPattern  = @"/api/dreams";
+static NSString *LayersPathPattern  = @"/api/layers";
 static NSString *FeedPathPattern    = @"/feed/dreams";
 
 + (ConnectionManager *)defaultManager
@@ -65,6 +66,8 @@ static NSString *FeedPathPattern    = @"/feed/dreams";
 {
     return @[
              [RKRoute routeWithClass:[User class] pathPattern:UserPathPattern method:RKRequestMethodPOST],
+             [RKRoute routeWithClass:[Dream class] pathPattern:DreamsPathPattern method:RKRequestMethodPOST],
+             [RKRoute routeWithClass:[Layer class] pathPattern:LayersPathPattern method:RKRequestMethodPOST],
              [RKRoute routeWithName:DreamsPathPattern pathPattern:DreamsPathPattern method:RKRequestMethodGET],
              [RKRoute routeWithName:FeedPathPattern pathPattern:FeedPathPattern method:RKRequestMethodGET]
              
@@ -75,6 +78,8 @@ static NSString *FeedPathPattern    = @"/feed/dreams";
 {
     return @[
              [RKRequestDescriptor requestDescriptorWithMapping:[User requestMapping] objectClass:[User class] rootKeyPath:nil method:RKRequestMethodPOST],
+             [RKRequestDescriptor requestDescriptorWithMapping:[Dream requestMapping] objectClass:[Dream class] rootKeyPath:nil method:RKRequestMethodPOST],
+             [RKRequestDescriptor requestDescriptorWithMapping:[Layer requestMapping] objectClass:[Layer class] rootKeyPath:nil method:RKRequestMethodPOST]
              ];
 }
 
@@ -84,6 +89,8 @@ static NSString *FeedPathPattern    = @"/feed/dreams";
     
     return @[
              [RKResponseDescriptor responseDescriptorWithMapping:[User responseMapping] method:RKRequestMethodPOST pathPattern:UserPathPattern keyPath:nil statusCodes:statusCodes],
+             [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodPOST pathPattern:DreamsPathPattern keyPath:nil statusCodes:statusCodes],
+             [RKResponseDescriptor responseDescriptorWithMapping:[Layer responseMapping] method:RKRequestMethodPOST pathPattern:LayersPathPattern keyPath:nil statusCodes:statusCodes],
              [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodGET pathPattern:DreamsPathPattern keyPath:nil statusCodes:statusCodes],
              [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodGET pathPattern:FeedPathPattern keyPath:nil statusCodes:statusCodes],
              
@@ -115,6 +122,16 @@ static NSString *FeedPathPattern    = @"/feed/dreams";
 - (void)requestUserCreation:(User *)user forDelegate:(id<ConnectionManagerDelegate>)delegate
 {
     [self sendRequestForObject:user withMethod:RKRequestMethodPOST andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
+}
+
+- (void)requestDreamCreation:(Dream *)dream forDelegate:(id<ConnectionManagerDelegate>)delegate
+{
+    [self sendRequestForObject:dream withMethod:RKRequestMethodPOST andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
+}
+
+- (void)requestLayerCreation:(Layer *)layer forDelegate:(id<ConnectionManagerDelegate>)delegate
+{
+    [self sendRequestForObject:layer withMethod:RKRequestMethodPOST andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
 }
 
 - (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate

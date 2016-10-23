@@ -44,6 +44,39 @@ post '/user' do
     render_fixture('User.json')
 end
 
+# Route to match dream creation
+post '/api/dreams' do
+    halt 400 unless request.content_type =~ /application\/json/i
+    halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'
+    
+    # Get JSON body contents
+    request.body.rewind
+    request_payload = JSON.parse request.body.read
+    
+    halt 400 unless request_payload['category'] == 'sport'
+    halt 400 unless request_payload['subcategory'] == 'football'
+    
+    render_fixture('DreamCreation.json')
+end
+
+# Route to match layer creation
+post '/api/layers' do
+    halt 400 unless request.content_type =~ /application\/json/i
+    halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'
+    
+    # Get JSON body contents
+    request.body.rewind
+    request_payload = JSON.parse request.body.read
+    
+    halt 400 unless request_payload['dream_id'] == 10
+    halt 400 unless request_payload['type'] == 'photo'
+    halt 400 unless request_payload['description'] == 'layerDescription'
+    halt 400 unless request_payload['url'] == 'http://url.to'
+    halt 400 unless request_payload['product_id'] == 20
+    
+    render_fixture('Layer.json')
+end
+
 # Route to match dreams request
 get '/api/dreams' do
     halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'

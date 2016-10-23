@@ -83,6 +83,7 @@
 		F0E28B3A1DBC954200456856 /* NewDreamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B391DBC954200456856 /* NewDreamVC.m */; };
 		F0E28B3E1DBCCA3500456856 /* NewsFeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */; };
 		F0E28B411DBCD54800456856 /* FirebaseUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B401DBCD54800456856 /* FirebaseUploader.m */; };
+		F0E28B431DBCE53E00456856 /* DreamCreation.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B421DBCE53E00456856 /* DreamCreation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTVC.m; sourceTree = "<group>"; };
 		F0E28B3F1DBCD54800456856 /* FirebaseUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseUploader.h; sourceTree = "<group>"; };
 		F0E28B401DBCD54800456856 /* FirebaseUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseUploader.m; sourceTree = "<group>"; };
+		F0E28B421DBCE53E00456856 /* DreamCreation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DreamCreation.json; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -548,6 +550,7 @@
 			children = (
 				F0E28B361DBC7C5800456856 /* AllDreams.json */,
 				F0E28B291DBC447A00456856 /* Dream.json */,
+				F0E28B421DBCE53E00456856 /* DreamCreation.json */,
 				F0E28B2B1DBC448D00456856 /* DreamsResponse.json */,
 				F0E28B321DBC757400456856 /* Layer.json */,
 				F0B974291DBC39340066632C /* Server.rb */,
@@ -671,6 +674,7 @@
 				F0B974321DBC39340066632C /* User.json in Resources */,
 				F0E28B371DBC7C5800456856 /* AllDreams.json in Resources */,
 				F0E28B2A1DBC447A00456856 /* Dream.json in Resources */,
+				F0E28B431DBCE53E00456856 /* DreamCreation.json in Resources */,
 				F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */,
 				F0B974301DBC39340066632C /* Server.rb in Resources */,
 				F0E28B331DBC757400456856 /* Layer.json in Resources */,
