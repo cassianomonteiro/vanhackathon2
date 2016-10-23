@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YTPlayerView.h>
 #import "User.h"
 
 @interface NewDreamVC : UIViewController
@@ -25,6 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *dreamTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;

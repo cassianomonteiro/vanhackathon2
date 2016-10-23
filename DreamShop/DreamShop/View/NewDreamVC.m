@@ -11,6 +11,7 @@
 #import <UIImageView+AFRKNetworking.h>
 #import "SearchProductsVC.h"
 #import "AlertControllerFactory.h"
+#import "YouTubeHandler.h"
 #import "FirebaseUploader.h"
 #import "ConnectionManager.h"
 #import "Dream.h"
@@ -20,6 +21,7 @@
 @interface NewDreamVC () <UITextFieldDelegate, ConnectionManagerDelegate>
 @property (nonatomic, strong) BUYProduct *selectedProduct;
 @property (nonatomic, strong) UIImage *selectedPhoto;
+@property (nonatomic, strong) NSString *youtubeURL;
 @property (nonatomic, strong) NSURL *uploadedPhotoURL;
 @property (nonatomic, strong) NSMutableArray<Layer *> *layers;
 @end
@@ -67,21 +69,50 @@
         [self addProductImageToImageView:self.photoImageView];
     }
     
-    [self addShopifyIconToImageView:self.photoImageView];
+    [self addShopifyIconToView:self.photoImageView];
+    [self addYoutubeIconToView:self.photoImageView];
+    [self.view bringSubviewToFront:self.photoImageView];
 }
 
-- (void)addShopifyIconToImageView:(UIImageView *)imageView
+- (void)addShopifyIconToView:(UIView *)view
 {
     if (self.selectedProduct) {
-        CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
-                                      imageView.frame.size.height - 38.f,
+        CGRect iconFrame = CGRectMake(view.frame.size.width - 38.f,
+                                      view.frame.size.height - 38.f,
                                       30.f,
                                       30.f);
         
         UIImageView *shopifyImageView = [[UIImageView alloc] initWithFrame:iconFrame];
         shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
         shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
-        [imageView addSubview:shopifyImageView];
+        [view addSubview:shopifyImageView];
+    }
+    [self validatePostButtonEnabling];
+}
+
+- (void)addYoutTubeURL:(NSString *)youtubeURL
+{
+    NSString *youtubeID = [YouTubeHandler youTubeIDFromURL:youtubeURL];
+    self.youtubeURL = youtubeURL;
+    [self.playerView loadWithVideoId:youtubeID];
+    [self.view bringSubviewToFront:self.playerView];
+    [self addShopifyIconToView:self.playerView];
+    [self addYoutubeIconToView:self.playerView];
+}
+
+- (void)addYoutubeIconToView:(UIView *)view
+{
+    if (self.youtubeURL) {
+        CGRect iconFrame = CGRectMake(8.f,
+                                      view.frame.size.height - 38.f,
+                                      30.f,
+                                      30.f);
+        
+        UIImageView *youtubeImageView = [[UIImageView alloc] initWithFrame:iconFrame];
+        youtubeImageView.contentMode = UIViewContentModeScaleAspectFit;
+        youtubeImageView.image = self.youtubeButton.imageView.image;
+        youtubeImageView.backgroundColor = [UIColor whiteColor];
+        [view addSubview:youtubeImageView];
     }
     [self validatePostButtonEnabling];
 }
@@ -162,12 +193,33 @@
     }
     self.selectedPhoto = image;
     self.photoImageView.image = image;
-    [self addShopifyIconToImageView:self.photoImageView];
+    [self addYoutubeIconToView:self.photoImageView];
+    [self addShopifyIconToView:self.photoImageView];
     [self addProductImageToImageView:self.photoImageView];
+    [self.view bringSubviewToFront:self.photoImageView];
 }
 
 - (IBAction)youtubeTapped:(UIButton *)sender
 {
+    UIAlertController *youtubeAlerController =
+    [AlertControllerFactory textFieldAlertControllerWithTitle:@"YouTube video"
+                                                      andText:nil
+                                               andPlaceHolder:@"YouTube link here!"
+                                                   actionName:@"Save"
+                                            completionHandler:^(NSString *text) {
+        NSString *youtubeID = [YouTubeHandler youTubeIDFromURL:text];
+        
+        if (!youtubeID) {
+            UIAlertController *warningAlertController = [AlertControllerFactory warningAlertControllerWithTitle:@"Invalid link!" andMessage:@"Please make sure to insert a valid YouTube link"];
+            [self presentViewController:warningAlertController animated:YES completion:nil];
+        }
+        else {
+            [self addYoutTubeURL:text];
+        }
+        
+    }];
+    
+    [self presentViewController:youtubeAlerController animated:YES completion:nil];
 }
 
 - (IBAction)postTapped:(UIBarButtonItem *)sender
@@ -196,6 +248,7 @@
     self.view.userInteractionEnabled = NO;
     self.view.alpha = 0.7f;
     [self.activityIndicator startAnimating];
+    [self.view bringSubviewToFront:self.activityIndicator];
 }
 
 - (void)stopProgressAnimation
@@ -235,6 +288,15 @@
         layer.layerDescription = [NSString stringWithFormat:@"%@ %@", self.selectedProduct.vendor, self.selectedProduct.title];
         layer.productId = self.selectedProduct.identifier;
         layer.layerURL = [imageLink imageURLWithSize:BUYImageURLSize1024x1024];
+        [self.layers addObject:layer];
+    }
+    
+    if (self.youtubeURL) {
+        Layer *layer = [[Layer alloc] init];
+        layer.dream = dream;
+        layer.type = LayerTypeVideo;
+        layer.layerDescription = self.dreamTextField.text;
+        layer.layerURL = [NSURL URLWithString:self.youtubeURL];
         [self.layers addObject:layer];
     }
 }
@@ -339,7 +401,7 @@
         self.postButton.enabled = ![self.dreamTextField.text isEqualToString:@""] &&
                                     ![self.selectedCategory.text isEqualToString:@""] &&
                                     ![self.selectedSubCategory.text isEqualToString:@""] &&
-                                    self.photoImageView.image;
+                                    (self.photoImageView.image || self.youtubeURL);
     });
 }
 

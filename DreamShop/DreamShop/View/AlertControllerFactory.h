@@ -10,8 +10,18 @@
 
 @interface AlertControllerFactory : NSObject
 
++ (UIAlertController *)textFieldAlertControllerWithTitle:(NSString *)title
+                                                 andText:(NSString *)text
+                                          andPlaceHolder:(NSString *)placeHolder
+                                              actionName:(NSString *)actionName
+                                       completionHandler:(void (^)(NSString *text))completionHandler;
+
++ (UIAlertController *)warningAlertControllerWithTitle:(NSString *)title
+                                            andMessage:(NSString *)message;
+
 + (UIAlertController *)photoSourceAlertControllerForViewController:(UIViewController *)viewController
                                                      withImageSize:(CGSize)size
                                                  completionHandler:(void(^)(UIImage *image))completionHandler;
+
 
 @end
