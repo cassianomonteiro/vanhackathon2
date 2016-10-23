@@ -22,8 +22,6 @@
     return [[self responseMapping] inverseMapping];
 }
 
-#pragma mark - Response Mapping
-
 + (RKObjectMapping *)responseMapping
 {
     // Create mapping object for this class

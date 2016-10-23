@@ -6,7 +6,7 @@
 //  Copyright © 2016 Cassiano Monteiro. All rights reserved.
 //
 
-#import "SignInDelegate.h"
+#import "SignInManager.h"
 #import <GoogleSignIn/GoogleSignIn.h>
 #import <FirebaseAuth/FirebaseAuth.h>
 #import <FirebaseAuthUI/FirebaseAuthUI.h>
@@ -14,12 +14,12 @@
 #import <FirebaseFacebookAuthUI/FirebaseFacebookAuthUI.h>
 #import <FirebaseTwitterAuthUI/FirebaseTwitterAuthUI.h>
 
-@interface SignInDelegate () <FIRAuthUIDelegate>
+@interface SignInManager () <FIRAuthUIDelegate>
 @property (nonatomic) FIRAuth *auth;
 @property (nonatomic) FIRAuthUI *authUI;
 @end
 
-@implementation SignInDelegate
+@implementation SignInManager
 
 - (instancetype)init
 {
@@ -48,7 +48,14 @@
 
 - (void)checkLoginForViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if (!self.auth.currentUser) {
+    NSLog(@"%@", self.auth.currentUser.uid);
+    NSLog(@"%@", self.auth.currentUser.photoURL);
+    
+    if (self.auth.currentUser) {
+        [[ConnectionManager defaultManager] setFirebaseKey:self.auth.currentUser.uid];
+        [self.delegate signInManagerDidSignIn:self];
+    }
+    else {
         [self showLoginScreenForViewController:viewController animated:NO];
     }
 }
@@ -81,14 +88,29 @@
             }
         }
         
+        [[ConnectionManager defaultManager] setFirebaseKey:nil];
+        [self.delegate signInManagerDidSignOut:self];
         [self showLoginScreenForViewController:viewController animated:animated];
     }
 }
+
+- (void)createUserForDelegate:(id<ConnectionManagerDelegate>)delegate
+{
+    User *user = [[User alloc] init];
+    user.name = self.auth.currentUser.displayName;
+    user.photoURL = self.auth.currentUser.photoURL;
+    user.firebaseKey = self.auth.currentUser.uid;
+    [[ConnectionManager defaultManager] requestUserCreation:user forDelegate:delegate];
+}
+
+#pragma mark - <FIRAuthUIDelegate>
 
 - (void)authUI:(FIRAuthUI *)authUI didSignInWithUser:(FIRUser *)user error:(NSError *)error
 {
     NSLog(@"%@ id: %@", user.isAnonymous ? @"Anonymous" : @"Signedin", user.uid);
     NSLog(@"photoURL: %@", user.photoURL);
+    [[ConnectionManager defaultManager] setFirebaseKey:user.uid];
+    [self.delegate signInManagerDidSignIn:self];
 }
 
 #pragma mark - Helpers

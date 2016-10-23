@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Dream.h"
 
 @class ConnectionManager;
 
@@ -36,6 +37,7 @@
 - (instancetype)initWithBaseURL:(NSURL *)baseURL;
 
 - (void)requestUserCreation:(User *)user forDelegate:(id<ConnectionManagerDelegate>)delegate;
-- (void)requestUserListsForDelegate:(id<ConnectionManagerDelegate>)delegate;
+- (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate;
+- (void)requestAllDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate;
 
 @end

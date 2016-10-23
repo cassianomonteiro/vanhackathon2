@@ -11,12 +11,13 @@
 #import <UIImageView+AFRKNetworking.h>
 #import "Dream.h"
 #import "AlertControllerFactory.h"
-#import "SignInDelegate.h"
+#import "SignInManager.h"
 #import "DreamCell.h"
 #import "SimpleImageCell.h"
+#import "ConnectionManager.h"
 
-@interface NewsFeedVC () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) SignInDelegate *signInDelegate;
+@interface NewsFeedVC () <UITableViewDataSource, UITableViewDelegate, ConnectionManagerDelegate, SignInManagerDelegate>
+@property (nonatomic, strong) SignInManager *signInManager;
 @property (nonatomic, strong) NSMutableArray<Dream *> *dreams;
 @end
 
@@ -29,38 +30,42 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.signInDelegate = [[SignInDelegate alloc] init];
-    [self.signInDelegate checkLoginForViewController:self animated:NO];
+    self.signInManager = [[SignInManager alloc] init];
+    self.signInManager.delegate = self;
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.dreams = [NSMutableArray array];
+    
+    [self.signInManager checkLoginForViewController:self animated:NO];
+//    [self loadDreams];
     
     // Mock dreams
-    NSArray<NSString *> *subCategories = @[SubCategoryBeach,
-                                           SubCategoryDesert,
-                                           SubCategoryCamping,
-                                           SubCategoryTourism,
-                                           SubCategoryAdventure];
-    
-    self.dreams = [NSMutableArray arrayWithCapacity:5];
-    
-    for (int i = 0; i<5; i++) {
-        Dream *dream = [[Dream alloc] init];
-        dream.dreamId = @(i);
-        dream.category = @"Travel";
-        dream.subCategory = subCategories[i];
-        
-        Layer *layer = [[Layer alloc] init];
-        layer.type = LayerTypePhoto;
-        layer.layerDescription = @"Skydiving";
-        layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
-        
-        User *user = [[User alloc] init];
-        user.photoURL = self.signInDelegate.userPhotoURL;
-        user.name = @"Cassiano Monteiro";
-        
-        dream.layers = @[layer];
-        dream.user = user;
-        [self.dreams addObject:dream];
-    }
+//    NSArray<NSString *> *subCategories = @[SubCategoryBeach,
+//                                           SubCategoryDesert,
+//                                           SubCategoryCamping,
+//                                           SubCategoryTourism,
+//                                           SubCategoryAdventure];
+//    
+//    self.dreams = [NSMutableArray arrayWithCapacity:5];
+//    
+//    for (int i = 0; i<5; i++) {
+//        Dream *dream = [[Dream alloc] init];
+//        dream.dreamId = @(i);
+//        dream.category = @"Travel";
+//        dream.subCategory = subCategories[i];
+//        
+//        Layer *layer = [[Layer alloc] init];
+//        layer.type = LayerTypePhoto;
+//        layer.layerDescription = @"Skydiving";
+//        layer.layerURL = [NSURL URLWithString:@"http://www.dreamify.com/Dreamify/skydiving_image.png"];
+//        
+//        User *user = [[User alloc] init];
+//        user.photoURL = self.signInDelegate.userPhotoURL;
+//        user.name = @"Cassiano Monteiro";
+//        
+//        dream.layers = @[layer];
+//        dream.user = user;
+//        [self.dreams addObject:dream];
+//    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,7 +80,7 @@
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory buttonIconFactory];
     factory.size = 24.f;
     
-    if (self.signInDelegate.userIsSignedIn) {
+    if (self.signInManager.userIsSignedIn) {
         self.loginButton.image = [factory createImageForIcon:NIKFontAwesomeIconSignOut];
     }
     else {
@@ -97,10 +102,10 @@
 
 - (IBAction)loginTapped:(UIBarButtonItem *)sender
 {
-    if (self.signInDelegate.userIsSignedIn) {
-        [self.signInDelegate signOutForViewController:self animated:YES];
+    if (self.signInManager.userIsSignedIn) {
+        [self.signInManager signOutForViewController:self animated:YES];
     } else {
-        [self.signInDelegate showLoginScreenForViewController:self animated:YES];
+        [self.signInManager showLoginScreenForViewController:self animated:YES];
     }
     
     [self refreshLoginButton];
@@ -167,8 +172,8 @@
     UIImage *userImage = [factory createImageForIcon:NIKFontAwesomeIconUser];
     
     cell.cellImageView.image = nil;
-    if (self.signInDelegate.userPhotoURL) {
-        [cell.cellImageView setImageWithURL:self.signInDelegate.userPhotoURL placeholderImage:userImage];
+    if (self.signInManager.userPhotoURL) {
+        [cell.cellImageView setImageWithURL:self.signInManager.userPhotoURL placeholderImage:userImage];
     }
     else {
         cell.cellImageView.image = userImage;
@@ -210,6 +215,68 @@
             return 0;
             break;
     }
+}
+
+#pragma mark - <ConnectionManagerDelegate>
+
+- (void)connectionManager:(ConnectionManager *)manager didCompleteRequestWithReturnedObjects:(NSArray *)objects
+{
+    if (objects && objects.count == 1 && [objects.firstObject isKindOfClass:[User class]]) {
+        // Request all dreams after user creation
+        [[ConnectionManager defaultManager] requestAllDreamsForDelegate:self];
+    }
+    else if (objects && objects.count > 0 && [objects.firstObject isKindOfClass:[Dream class]]) {
+        self.dreams = [objects mutableCopy];
+        [self stopProgressAnimation];
+    }
+    else {
+        [self connectionManager:manager didFailRequestWithError:nil];
+    }
+}
+
+- (void)connectionManager:(ConnectionManager *)manager didFailRequestWithError:(NSError *)error
+{
+    self.dreams = [NSMutableArray array];
+    [self stopProgressAnimation];
+}
+
+#pragma mark - <SignInManagerDelegate>
+
+- (void)signInManagerDidSignIn:(id)manager
+{
+    [self loadDreams];
+}
+
+- (void)signInManagerDidSignOut:(id)manager
+{
+    self.dreams = [NSMutableArray array];
+}
+
+#pragma mark - Helpers
+
+- (void)loadDreams
+{
+    [self startProgressAnimation];
+    
+    // Create user, if it doesn't exist yet
+    [self.signInManager createUserForDelegate:self];
+}
+
+- (void)startProgressAnimation
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self.activityIndicator startAnimating];
+    self.tableView.userInteractionEnabled = NO;
+}
+
+- (void)stopProgressAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self.activityIndicator stopAnimating];
+        self.tableView.userInteractionEnabled = YES;
+        [self.tableView reloadData];
+    });
 }
 
 @end

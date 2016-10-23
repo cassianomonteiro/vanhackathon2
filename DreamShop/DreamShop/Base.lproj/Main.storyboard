@@ -84,7 +84,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="lvm-Vc-tEl" secondAttribute="bottom" id="4nU-1M-Wd7"/>
                                                 <constraint firstItem="lvm-Vc-tEl" firstAttribute="leading" secondItem="FXy-AX-Kte" secondAttribute="leadingMargin" constant="8" id="H4M-8R-pif"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lvm-Vc-tEl" secondAttribute="trailing" constant="8" id="OIb-hb-bTw"/>
-                                                <constraint firstItem="lvm-Vc-tEl" firstAttribute="top" secondItem="FXy-AX-Kte" secondAttribute="topMargin" id="jcb-do-244"/>
+                                                <constraint firstItem="lvm-Vc-tEl" firstAttribute="top" secondItem="FXy-AX-Kte" secondAttribute="topMargin" constant="0.5" id="gKl-ob-k5d"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -110,14 +110,12 @@
                                                                 <constraint firstAttribute="width" secondItem="3JS-Fe-mZP" secondAttribute="height" multiplier="250:160" id="2WT-1Q-oHa"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="I dream with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-9H-elB">
-                                                            <frame key="frameInset" minX="8" minY="225" width="327" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I dream with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-9H-elB">
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Swimming with dolphins" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qh-nC-9aV">
-                                                            <frame key="frameInset" minX="8" minY="246" width="327" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swimming with dolphins" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qh-nC-9aV">
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -207,6 +205,9 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="scM-ZA-qbM"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fwy-sT-yo1">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -218,9 +219,11 @@
                             <constraint firstItem="B2l-OO-GMy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="D7T-KD-yyL"/>
                             <constraint firstItem="WrM-1S-Ihb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="FU0-jA-d0e"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Zsf-52-5gv" secondAttribute="leading" id="Nzo-8W-JcZ"/>
+                            <constraint firstItem="Fwy-sT-yo1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QPt-Ld-66Q"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Zsf-52-5gv" secondAttribute="trailing" id="RAE-VW-ayO"/>
                             <constraint firstItem="B2l-OO-GMy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RWr-O6-Sbk"/>
                             <constraint firstItem="TCm-oh-ZO9" firstAttribute="top" secondItem="Zsf-52-5gv" secondAttribute="bottom" constant="7.5" id="SDL-Mb-uiU"/>
+                            <constraint firstItem="Fwy-sT-yo1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eq2-VM-5ez"/>
                             <constraint firstItem="Zsf-52-5gv" firstAttribute="top" secondItem="B2l-OO-GMy" secondAttribute="bottom" constant="8" id="f5g-bs-4LF"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="WrM-1S-Ihb" secondAttribute="bottom" id="uIQ-Na-IO4"/>
                             <constraint firstItem="9sp-Ha-wqG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="x0p-Rz-78Q"/>
@@ -239,6 +242,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Fwy-sT-yo1" id="81b-3w-KDZ"/>
                         <outlet property="loginButton" destination="moa-Bc-3Lc" id="ddd-xl-9xi"/>
                         <outlet property="photoImageView" destination="Zsf-52-5gv" id="wsq-2S-zYr"/>
                         <outlet property="postButton" destination="hds-FX-tg5" id="n9k-7c-C56"/>
@@ -254,7 +258,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MuH-Vx-70i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGf-bu-e1f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGf-bu-e1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -272,7 +276,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4L6-bR-o4P" customClass="ProductViewNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5n8-4c-JB4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5n8-4c-JB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

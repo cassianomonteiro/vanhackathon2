@@ -45,8 +45,8 @@ post '/user' do
 end
 
 
-# Route to match lists request
-get '/api/lists' do
+# Route to match dreams request
+get '/api/dreams' do
     halt 400 unless request.env['HTTP_FIREBASE_KEY']== 'abcde'
-    render_fixture('ListsResponse.json')
+    render_fixture('DreamsResponse.json')
 end

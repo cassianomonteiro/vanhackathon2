@@ -96,24 +96,24 @@
 
 #pragma mark - Lists tests
 
-//- (void)testRequestLists
-//{
-//    [self evaluateRequestBlock:^{
-//        
-//        // Given
-//        self.manager.firebaseKey = @"abcde";
-//        
-//        // When
-//        [self.manager requestUserListsForDelegate:self.delegateMock];
-//        
-//    } withEvaluationBlock:^(NSArray *returnedObjects) {
-//        
-//        XCTAssertEqual(returnedObjects.count, 2);
-//        XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[List class]]);
-//        XCTAssertEqual([returnedObjects.firstObject listId], 1);
-//        XCTAssertEqualObjects([returnedObjects.firstObject name], @"Decluttering");
-//    }];
-//}
+- (void)testRequestDreams
+{
+    [self evaluateRequestBlock:^{
+        
+        // Given
+        self.manager.firebaseKey = @"abcde";
+        
+        // When
+        [self.manager requestUserDreamsForDelegate:self.delegateMock];
+        
+    } withEvaluationBlock:^(NSArray *returnedObjects) {
+        
+        XCTAssertEqual(returnedObjects.count, 2);
+        XCTAssertTrue([returnedObjects.firstObject isKindOfClass:[Dream class]]);
+        XCTAssertEqualObjects([returnedObjects.firstObject dreamId], @1);
+        XCTAssertEqualObjects([returnedObjects.firstObject category], @"movie");
+    }];
+}
 
 #pragma mark - Helpers
 

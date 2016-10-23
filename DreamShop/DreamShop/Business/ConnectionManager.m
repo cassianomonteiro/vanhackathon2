@@ -20,8 +20,8 @@
 static ConnectionManager *_sharedInstance;
 static NSString *DefaultBaseURL = @"https://dreamwishlist-api.herokuapp.com";
 
-static NSString *userPathPattern =  @"/user";
-//static NSString *listsPathPattern = @"/api/lists";
+static NSString *UserPathPattern =  @"/user";
+static NSString *DreamsPathPattern = @"/api/dreams";
 
 + (ConnectionManager *)defaultManager
 {
@@ -63,8 +63,8 @@ static NSString *userPathPattern =  @"/user";
 - (NSArray *)defaultClassRoutes
 {
     return @[
-             [RKRoute routeWithClass:[User class] pathPattern:userPathPattern method:RKRequestMethodPOST],
-//             [RKRoute routeWithClass:[List class] pathPattern:listsPathPattern method:RKRequestMethodGET],
+             [RKRoute routeWithClass:[User class] pathPattern:UserPathPattern method:RKRequestMethodPOST],
+             [RKRoute routeWithClass:[Dream class] pathPattern:DreamsPathPattern method:RKRequestMethodGET],
              ];
 }
 
@@ -80,8 +80,8 @@ static NSString *userPathPattern =  @"/user";
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
     
     return @[
-             [RKResponseDescriptor responseDescriptorWithMapping:[User responseMapping] method:RKRequestMethodPOST pathPattern:userPathPattern keyPath:nil statusCodes:statusCodes],
-//             [RKResponseDescriptor responseDescriptorWithMapping:[List responseMapping] method:RKRequestMethodGET pathPattern:userPathPattern keyPath:@"data" statusCodes:statusCodes],
+             [RKResponseDescriptor responseDescriptorWithMapping:[User responseMapping] method:RKRequestMethodPOST pathPattern:UserPathPattern keyPath:nil statusCodes:statusCodes],
+             [RKResponseDescriptor responseDescriptorWithMapping:[Dream responseMapping] method:RKRequestMethodGET pathPattern:DreamsPathPattern keyPath:nil statusCodes:statusCodes],
              
              // Add error response descriptor to be tried last
              [self errorResponseDescriptor]
@@ -113,19 +113,18 @@ static NSString *userPathPattern =  @"/user";
     [self sendRequestForObject:user withMethod:RKRequestMethodPOST andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
 }
 
-- (void)requestUserListsForDelegate:(id<ConnectionManagerDelegate>)delegate
+- (void)requestUserDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate
 {
-//    [self sendRequestForObject:nil withMethod:RKRequestMethodGET andPath:listsPathPattern andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
+    [self sendRequestForObject:[Dream new] withMethod:RKRequestMethodGET andPath:nil andBodyParameters:nil andHeaderParameters:nil forDelegate:delegate];
+}
+
+- (void)requestAllDreamsForDelegate:(id<ConnectionManagerDelegate>)delegate
+{
+    // Mock request for now
+    [self requestUserDreamsForDelegate:delegate];
 }
 
 #pragma mark - Helpers
-
-
-// Helper method to forward calls to class routes (no path)
-//- (void)sendRequestForObject:(id)object withMethod:(RKRequestMethod)requestMethod andBodyParameters:(NSDictionary *)bodyParameters andHeaderParameters:(NSDictionary<NSString *, NSString *> *)headerParameters forDelegate:(id<ConnectionManagerDelegate>)delegate
-//{
-//    [self sendRequestForObject:object withMethod:requestMethod andPath:nil andBodyParameters:bodyParameters andHeaderParameters:headerParameters forDelegate:delegate];
-//}
 
 - (void)sendRequestForObject:(id)object withMethod:(RKRequestMethod)requestMethod andPath:(NSString *)path andBodyParameters:(NSDictionary *)bodyParameters andHeaderParameters:(NSDictionary<NSString *, NSString *> *)headerParameters forDelegate:(id<ConnectionManagerDelegate>)delegate
 {

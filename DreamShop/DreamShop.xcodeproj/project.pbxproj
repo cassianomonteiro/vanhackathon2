@@ -62,7 +62,7 @@
 		F0B974071DBB969F0066632C /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FC1DBB969F0066632C /* Theme.m */; };
 		F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FE1DBB969F0066632C /* VisualEffectView.m */; };
 		F0B9740B1DBBE3D90066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */; };
-		F0B9740E1DBBF12D0066632C /* SignInDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9740D1DBBF12D0066632C /* SignInDelegate.m */; };
+		F0B9740E1DBBF12D0066632C /* SignInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9740D1DBBF12D0066632C /* SignInManager.m */; };
 		F0B974111DBBFBBB0066632C /* SimpleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974101DBBFBBB0066632C /* SimpleImageCell.m */; };
 		F0B974141DBC05A20066632C /* DreamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974131DBC05A20066632C /* DreamCell.m */; };
 		F0B974181DBC09310066632C /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974171DBC09310066632C /* Dream.m */; };
@@ -73,6 +73,9 @@
 		F0B974301DBC39340066632C /* Server.rb in Resources */ = {isa = PBXBuildFile; fileRef = F0B974291DBC39340066632C /* Server.rb */; };
 		F0B974321DBC39340066632C /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B9742C1DBC39340066632C /* User.json */; };
 		F0E28B281DBC3AEF00456856 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B271DBC3AEF00456856 /* UserTests.m */; };
+		F0E28B2A1DBC447A00456856 /* Dream.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B291DBC447A00456856 /* Dream.json */; };
+		F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B2B1DBC448D00456856 /* DreamsResponse.json */; };
+		F0E28B2E1DBC44FE00456856 /* DreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B2D1DBC44FE00456856 /* DreamTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,8 +197,8 @@
 		F0B973FD1DBB969F0066632C /* VisualEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisualEffectView.h; sourceTree = "<group>"; };
 		F0B973FE1DBB969F0066632C /* VisualEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisualEffectView.m; sourceTree = "<group>"; };
 		F0B9740A1DBBE3D90066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F0B9740C1DBBF12D0066632C /* SignInDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInDelegate.h; sourceTree = "<group>"; };
-		F0B9740D1DBBF12D0066632C /* SignInDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInDelegate.m; sourceTree = "<group>"; };
+		F0B9740C1DBBF12D0066632C /* SignInManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInManager.h; sourceTree = "<group>"; };
+		F0B9740D1DBBF12D0066632C /* SignInManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInManager.m; sourceTree = "<group>"; };
 		F0B9740F1DBBFBBB0066632C /* SimpleImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleImageCell.h; sourceTree = "<group>"; };
 		F0B974101DBBFBBB0066632C /* SimpleImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleImageCell.m; sourceTree = "<group>"; };
 		F0B974121DBC05A20066632C /* DreamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamCell.h; sourceTree = "<group>"; };
@@ -212,6 +215,9 @@
 		F0B974291DBC39340066632C /* Server.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = Server.rb; sourceTree = "<group>"; };
 		F0B9742C1DBC39340066632C /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		F0E28B271DBC3AEF00456856 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		F0E28B291DBC447A00456856 /* Dream.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Dream.json; sourceTree = "<group>"; };
+		F0E28B2B1DBC448D00456856 /* DreamsResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DreamsResponse.json; sourceTree = "<group>"; };
+		F0E28B2D1DBC44FE00456856 /* DreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamTests.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -325,8 +331,8 @@
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 				F0B973861DBB87380066632C /* SearchProductsVC.h */,
 				F0B973871DBB87380066632C /* SearchProductsVC.m */,
-				F0B9740C1DBBF12D0066632C /* SignInDelegate.h */,
-				F0B9740D1DBBF12D0066632C /* SignInDelegate.m */,
+				F0B9740C1DBBF12D0066632C /* SignInManager.h */,
+				F0B9740D1DBBF12D0066632C /* SignInManager.m */,
 				F0B9740F1DBBFBBB0066632C /* SimpleImageCell.h */,
 				F0B974101DBBFBBB0066632C /* SimpleImageCell.m */,
 			);
@@ -514,6 +520,8 @@
 		F0B974261DBC39340066632C /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				F0E28B291DBC447A00456856 /* Dream.json */,
+				F0E28B2B1DBC448D00456856 /* DreamsResponse.json */,
 				F0B974291DBC39340066632C /* Server.rb */,
 				F0B9742C1DBC39340066632C /* User.json */,
 			);
@@ -523,6 +531,7 @@
 		F0E28B261DBC3AB500456856 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F0E28B2D1DBC44FE00456856 /* DreamTests.m */,
 				F0E28B271DBC3AEF00456856 /* UserTests.m */,
 			);
 			path = Model;
@@ -631,6 +640,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B974321DBC39340066632C /* User.json in Resources */,
+				F0E28B2A1DBC447A00456856 /* Dream.json in Resources */,
+				F0E28B2C1DBC448D00456856 /* DreamsResponse.json in Resources */,
 				F0B974301DBC39340066632C /* Server.rb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,7 +751,7 @@
 				F0B973591DBAF3350066632C /* DreamShop.xcdatamodeld in Sources */,
 				F0B973CE1DBB95C70066632C /* DisclosureIndicatorView.m in Sources */,
 				F0B973DA1DBB95C80066632C /* ProductViewControllerThemeTintColorTableViewCell.m in Sources */,
-				F0B9740E1DBBF12D0066632C /* SignInDelegate.m in Sources */,
+				F0B9740E1DBBF12D0066632C /* SignInManager.m in Sources */,
 				F0B973501DBAF3350066632C /* AppDelegate.m in Sources */,
 				F0B974041DBB969F0066632C /* UIButton+PaymentButton.m in Sources */,
 				F0B973831DBB197C0066632C /* UIImage+Alpha.m in Sources */,
@@ -798,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0E28B281DBC3AEF00456856 /* UserTests.m in Sources */,
+				F0E28B2E1DBC44FE00456856 /* DreamTests.m in Sources */,
 				F0B974251DBC391B0066632C /* ConnectionManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -940,9 +952,6 @@
 					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/FirebaseCrash/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseAuthUI/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseGoogleAuthUI/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",
@@ -977,9 +986,6 @@
 					"\"${PODS_ROOT}/FirebaseCore/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/FirebaseCrash/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks/frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseAuthUI/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseGoogleAuthUI/Frameworks\"",
-					"\"${PODS_ROOT}/FirebaseUI/FirebaseUIFrameworks/FirebaseTwitterAuthUI/Frameworks\"",
 					"\"${PODS_ROOT}/GoogleAppUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleAuthUtilities/Frameworks/frameworks\"",
 					"\"${PODS_ROOT}/GoogleInterchangeUtilities/Frameworks/frameworks\"",

@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConnectionManager.h"
 
-@interface SignInDelegate : NSObject
+@class SignInManager;
+
+@protocol SignInManagerDelegate <NSObject>
+- (void)signInManagerDidSignIn:(SignInManager *)manager;
+- (void)signInManagerDidSignOut:(SignInManager *)manager;
+@end
+
+@interface SignInManager : NSObject
+
+@property (nonatomic, weak) id<SignInManagerDelegate> delegate;
 
 @property (nonatomic, readonly) BOOL userIsSignedIn;
 @property (nonatomic, readonly) NSURL *userPhotoURL;
@@ -33,5 +43,11 @@
  * @param animated: animate or not the sign-in screen presentation
  */
 - (void)signOutForViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
+/**
+ * Tries to create an user, if it's not registered yet
+ * @param delegate: a ConnectionManagerDelegate instance to receive the response for user creation
+ */
+- (void)createUserForDelegate:(id<ConnectionManagerDelegate>)delegate;
 
 @end
