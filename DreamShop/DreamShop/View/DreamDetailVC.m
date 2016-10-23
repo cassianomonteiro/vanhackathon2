@@ -11,6 +11,7 @@
 #import "UIImage+Resize.h"
 #import "ProductViewNavigationController.h"
 #import "ProductViewController.h"
+#import "YouTubeHandler.h"
 
 #define SHOP_DOMAIN @"dreamandshop.myshopify.com"
 #define API_KEY @"8ada472409a58bacffb8c054e1770894"
@@ -125,6 +126,18 @@
     [cardView.layer setBorderWidth:10.];
     [cardView.layer setCornerRadius:4.];
     
+    if ([LayerTypeVideo isEqualToString:layer.type]) {
+        [self addVideoPlayerToCardView:cardView fromLayer:layer];
+    }
+    else {
+        [self addImageViewToCardView:cardView fromLayer:layer];
+    }
+    
+    return cardView;
+}
+
+- (void)addImageViewToCardView:(UIView *)cardView fromLayer:(Layer *)layer
+{
     NSURLRequest *request = [NSURLRequest requestWithURL:layer.layerURL];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectInset(cardView.frame, 20, 20)];
     UIImageView __weak *weakImageView = imageView;
@@ -135,15 +148,21 @@
                                   weakImageView.image = [self squaredImage:image forSize:weakImageView.frame.size];
                                   
                                   if ([LayerTypeProduct isEqualToString:layer.type]) {
-                                      [self addShopifyIconToImageView:weakImageView];
+                                      [self addShopifyIconToView:weakImageView withPadding:4.f];
                                   }
                               }
                               failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                   weakImageView.image = nil;
                               }];
-    
     [cardView addSubview:imageView];
-    return cardView;
+}
+
+- (void)addVideoPlayerToCardView:(UIView *)cardView fromLayer:(Layer *)layer
+{
+    UIView *playerView = [YouTubeHandler youTubePlayerViewWithURL:layer.layerURL inFrame:cardView.frame];
+    playerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight);
+    [cardView addSubview:playerView];
+    [self addShopifyIconToView:cardView withPadding:16.f];
 }
 
 - (UIImage *)squaredImage:(UIImage *)image forSize:(CGSize)size
@@ -159,10 +178,10 @@
     return [scaledImage croppedImage:croppedRect];
 }
 
-- (void)addShopifyIconToImageView:(UIImageView *)imageView
+- (void)addShopifyIconToView:(UIView *)view withPadding:(CGFloat)padding
 {
-    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 34.f,
-                                  imageView.frame.size.height - 34.f,
+    CGRect iconFrame = CGRectMake(view.frame.size.width - 30.f - padding,
+                                  view.frame.size.height - 30.f - padding,
                                   30.f,
                                   30.f);
     
@@ -170,7 +189,7 @@
     shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
     shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
     
-    [imageView addSubview:shopifyImageView];
+    [view addSubview:shopifyImageView];
 }
 
 - (NSDictionary<NSString *, UIColor *> *)subCategoriesColors

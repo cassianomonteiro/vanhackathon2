@@ -84,6 +84,7 @@
 		F0E28B3E1DBCCA3500456856 /* NewsFeedTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B3D1DBCCA3500456856 /* NewsFeedTVC.m */; };
 		F0E28B411DBCD54800456856 /* FirebaseUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B401DBCD54800456856 /* FirebaseUploader.m */; };
 		F0E28B431DBCE53E00456856 /* DreamCreation.json in Resources */ = {isa = PBXBuildFile; fileRef = F0E28B421DBCE53E00456856 /* DreamCreation.json */; };
+		F0E28B491DBD12A500456856 /* YouTubeHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E28B481DBD12A500456856 /* YouTubeHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,8 @@
 		F0E28B3F1DBCD54800456856 /* FirebaseUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseUploader.h; sourceTree = "<group>"; };
 		F0E28B401DBCD54800456856 /* FirebaseUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirebaseUploader.m; sourceTree = "<group>"; };
 		F0E28B421DBCE53E00456856 /* DreamCreation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DreamCreation.json; sourceTree = "<group>"; };
+		F0E28B471DBD12A500456856 /* YouTubeHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeHandler.h; sourceTree = "<group>"; };
+		F0E28B481DBD12A500456856 /* YouTubeHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeHandler.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -533,6 +536,8 @@
 				F0B974221DBC38F60066632C /* ConnectionManager.m */,
 				F0E28B3F1DBCD54800456856 /* FirebaseUploader.h */,
 				F0E28B401DBCD54800456856 /* FirebaseUploader.m */,
+				F0E28B471DBD12A500456856 /* YouTubeHandler.h */,
+				F0E28B481DBD12A500456856 /* YouTubeHandler.m */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				F0B974231DBC38F60066632C /* ConnectionManager.m in Sources */,
 				F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */,
 				F0B973D51DBB95C70066632C /* ProductImageCell.m in Sources */,
+				F0E28B491DBD12A500456856 /* YouTubeHandler.m in Sources */,
 				F0B9737B1DBB125B0066632C /* AlertControllerFactory.m in Sources */,
 				F0B973841DBB197C0066632C /* UIImage+Resize.m in Sources */,
 				F0B973DC1DBB95C80066632C /* ProductViewHeader.m in Sources */,

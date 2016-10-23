@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YTPlayerView.h>
 #import "Dream.h"
 
 @interface DreamCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *dreamImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dreamDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet YTPlayerView *playerView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;

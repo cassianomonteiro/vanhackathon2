@@ -10,6 +10,7 @@
 #import <FontAwesomeIconFactory.h>
 #import <UIImageView+AFRKNetworking.h>
 #import "UIImage+Resize.h"
+#import "YouTubeHandler.h"
 
 @implementation DreamCell
 
@@ -58,27 +59,28 @@
         cell.userImageView.image = [factory createImageForIcon:NIKFontAwesomeIconUser];
     }
     
-    NSArray<Layer *> *mainLayers = [dream.layers sortedArrayUsingComparator:^NSComparisonResult(Layer  * _Nonnull obj1, Layer   * _Nonnull obj2) {
+    Layer *layer = dream.layers.firstObject;
+    cell.playerView.hidden = ![LayerTypeVideo isEqualToString:layer.type];
+    cell.dreamImageView.hidden = [LayerTypeVideo isEqualToString:layer.type];
+    
+    if ([LayerTypeVideo isEqualToString:layer.type]) {
         
-        if ([LayerTypePhoto isEqualToString:obj1.type]) {
-            return NSOrderedAscending;
+        NSString *youtubeID = [YouTubeHandler youTubeIDFromURL:layer.layerURL.absoluteString];
+        if (youtubeID) {
+            [cell.playerView loadWithVideoId:youtubeID];
+            [self checkShopifyIconForDream:dream onView:cell.playerView];
         }
-        else if ([LayerTypePhoto isEqualToString:obj2.type]) {
-            return NSOrderedDescending;
-        }
-        return NSOrderedSame;
-    }];
-    
-    Layer *layer = mainLayers.firstObject;
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:layer.layerURL];
-    [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        cell.dreamImageView.image = [self adjustedImage:image forSize:cell.dreamImageView.frame.size];
-        [self checkShopifyIconForDream:dream onImageView:cell.dreamImageView];
     }
-    failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        cell.dreamImageView.image = nil;
-    }];
+    else {
+        NSURLRequest *request = [NSURLRequest requestWithURL:layer.layerURL];
+        [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            cell.dreamImageView.image = [self adjustedImage:image forSize:cell.dreamImageView.frame.size];
+            [self checkShopifyIconForDream:dream onView:cell.dreamImageView];
+        }
+        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            cell.dreamImageView.image = nil;
+        }];
+    }
     
     cell.dreamDescriptionLabel.text = layer.layerDescription;
     cell.userNameLabel.text = dream.user.name;
@@ -101,25 +103,27 @@
     return [scaledImage croppedImage:croppedRect];
 }
 
-+ (void)checkShopifyIconForDream:(Dream *)dream onImageView:(UIImageView *)imageView
++ (void)checkShopifyIconForDream:(Dream *)dream onView:(UIView *)view
 {
     NSArray *products = [dream.layers filteredArrayUsingPredicate:
                          [NSPredicate predicateWithFormat:@"type = %@", LayerTypeProduct]];
     
     if (products.count > 0) {
-        [self addShopifyIconToImageView:imageView];
+        [self addShopifyIconToView:view];
     }
     else {
-        for (UIView *view in imageView.subviews) {
-            [view removeFromSuperview];
+        for (UIView *subView in view.subviews) {
+            if ([subView isKindOfClass:[UIImageView class]]) {
+                [subView removeFromSuperview];
+            }
         }
     }
 }
 
-+ (void)addShopifyIconToImageView:(UIImageView *)imageView
++ (void)addShopifyIconToView:(UIView *)view
 {
-    CGRect iconFrame = CGRectMake(imageView.frame.size.width - 38.f,
-                                  imageView.frame.size.height - 38.f,
+    CGRect iconFrame = CGRectMake(view.frame.size.width - 38.f,
+                                  view.frame.size.height - 38.f,
                                   30.f,
                                   30.f);
     
@@ -127,7 +131,7 @@
     shopifyImageView.contentMode = UIViewContentModeScaleAspectFit;
     shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
     
-    [imageView addSubview:shopifyImageView];
+    [view addSubview:shopifyImageView];
 }
 
 @end

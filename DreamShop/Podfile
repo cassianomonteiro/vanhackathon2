@@ -20,6 +20,7 @@ target 'DreamShop' do
   pod 'RestKit'
   pod 'RestKit/Testing'
   pod 'Mobile-Buy-SDK'
+  pod 'youtube-ios-player-helper'
 
   target 'DreamShopTests' do
     inherit! :search_paths

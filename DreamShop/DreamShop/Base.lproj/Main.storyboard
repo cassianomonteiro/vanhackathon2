@@ -65,9 +65,9 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lvm-Vc-tEl" secondAttribute="bottom" id="7Fv-9x-6IN"/>
                                                 <constraint firstItem="lvm-Vc-tEl" firstAttribute="leading" secondItem="FXy-AX-Kte" secondAttribute="leadingMargin" constant="8" id="H4M-8R-pif"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lvm-Vc-tEl" secondAttribute="trailing" constant="8" id="OIb-hb-bTw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lvm-Vc-tEl" secondAttribute="bottom" id="bTL-7h-Py0"/>
                                                 <constraint firstItem="lvm-Vc-tEl" firstAttribute="top" secondItem="FXy-AX-Kte" secondAttribute="topMargin" id="gKl-ob-k5d"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -78,11 +78,11 @@
                                             <segue destination="U7p-f1-JMW" kind="show" id="3hd-OG-fJz"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DreamCell" rowHeight="343" id="b7t-YM-sdq" customClass="DreamCell">
-                                        <rect key="frame" x="0.0" y="133" width="375" height="343"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DreamCell" rowHeight="344" id="b7t-YM-sdq" customClass="DreamCell">
+                                        <rect key="frame" x="0.0" y="133" width="375" height="344"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7t-YM-sdq" id="y5Z-yf-cQM">
-                                            <frame key="frameInset" width="375" height="342"/>
+                                            <frame key="frameInset" width="375" height="343"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVw-SF-vRq">
@@ -95,6 +95,9 @@
                                                                 <constraint firstAttribute="width" secondItem="3JS-Fe-mZP" secondAttribute="height" multiplier="250:160" id="2WT-1Q-oHa"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="che-bF-WGP" customClass="YTPlayerView">
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I dream with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-9H-elB">
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,12 +142,14 @@
                                                         <constraint firstItem="Fbq-4p-KbW" firstAttribute="leading" secondItem="aVw-SF-vRq" secondAttribute="leading" constant="8" id="1hJ-9y-KZn"/>
                                                         <constraint firstItem="7xt-j7-L8s" firstAttribute="height" secondItem="aVw-SF-vRq" secondAttribute="height" id="23a-5h-meK"/>
                                                         <constraint firstAttribute="trailing" secondItem="6Yh-9H-elB" secondAttribute="trailing" constant="8" id="4ON-yo-Eji"/>
+                                                        <constraint firstItem="che-bF-WGP" firstAttribute="centerY" secondItem="3JS-Fe-mZP" secondAttribute="centerY" id="6fM-r1-Wqf"/>
                                                         <constraint firstItem="3JS-Fe-mZP" firstAttribute="leading" secondItem="aVw-SF-vRq" secondAttribute="leading" constant="8" id="9cn-Yb-e0o"/>
                                                         <constraint firstItem="7xt-j7-L8s" firstAttribute="centerY" secondItem="aVw-SF-vRq" secondAttribute="centerY" id="AX5-qa-BXm"/>
                                                         <constraint firstItem="6Yh-9H-elB" firstAttribute="bottom" secondItem="4Qh-nC-9aV" secondAttribute="top" id="Aq1-GB-8E9"/>
                                                         <constraint firstItem="Fbq-4p-KbW" firstAttribute="top" secondItem="4Qh-nC-9aV" secondAttribute="bottom" constant="8" id="DA2-Lm-ISk"/>
                                                         <constraint firstItem="6Yh-9H-elB" firstAttribute="leading" secondItem="aVw-SF-vRq" secondAttribute="leading" constant="8" id="DMz-Ps-Rs4"/>
                                                         <constraint firstItem="3JS-Fe-mZP" firstAttribute="top" secondItem="aVw-SF-vRq" secondAttribute="top" constant="8" id="QFi-hG-WqU"/>
+                                                        <constraint firstItem="che-bF-WGP" firstAttribute="width" secondItem="3JS-Fe-mZP" secondAttribute="width" id="VH1-nE-CTU"/>
                                                         <constraint firstItem="6Yh-9H-elB" firstAttribute="top" secondItem="3JS-Fe-mZP" secondAttribute="bottom" constant="8" id="Vl7-Cw-JpQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="A1L-SP-LKa" secondAttribute="trailing" constant="8" id="W5V-2C-wG3"/>
                                                         <constraint firstItem="A1L-SP-LKa" firstAttribute="top" secondItem="oxa-0E-ljW" secondAttribute="top" id="WPV-CV-yDU"/>
@@ -160,7 +165,9 @@
                                                         <constraint firstItem="qCp-nY-dpE" firstAttribute="centerY" secondItem="Fbq-4p-KbW" secondAttribute="centerY" id="mb0-WT-EQN"/>
                                                         <constraint firstItem="4Qh-nC-9aV" firstAttribute="leading" secondItem="aVw-SF-vRq" secondAttribute="leading" constant="8" id="oHe-fY-W7q"/>
                                                         <constraint firstAttribute="trailing" secondItem="Byk-Cw-FTH" secondAttribute="trailing" constant="8" id="oJG-3H-3h4"/>
+                                                        <constraint firstItem="che-bF-WGP" firstAttribute="height" secondItem="3JS-Fe-mZP" secondAttribute="height" id="raX-yb-VXT"/>
                                                         <constraint firstAttribute="trailing" secondItem="4Qh-nC-9aV" secondAttribute="trailing" constant="8" id="skk-jf-DZa"/>
+                                                        <constraint firstItem="che-bF-WGP" firstAttribute="centerX" secondItem="3JS-Fe-mZP" secondAttribute="centerX" id="xua-Mz-4zD"/>
                                                         <constraint firstItem="Byk-Cw-FTH" firstAttribute="bottom" secondItem="oxa-0E-ljW" secondAttribute="bottom" id="yMv-aE-VQ8"/>
                                                     </constraints>
                                                 </view>
@@ -168,7 +175,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="aVw-SF-vRq" firstAttribute="leading" secondItem="y5Z-yf-cQM" secondAttribute="leadingMargin" constant="8" id="0Cu-Ku-zlL"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aVw-SF-vRq" secondAttribute="bottom" id="gMq-S9-UGe"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aVw-SF-vRq" secondAttribute="bottom" id="MQd-U3-DfJ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aVw-SF-vRq" secondAttribute="trailing" constant="8" id="nuQ-ow-Fus"/>
                                                 <constraint firstItem="aVw-SF-vRq" firstAttribute="top" secondItem="y5Z-yf-cQM" secondAttribute="topMargin" id="xZp-Le-4fa"/>
                                             </constraints>
@@ -179,6 +186,7 @@
                                             <outlet property="categoryLabel" destination="A1L-SP-LKa" id="WDr-nb-uq5"/>
                                             <outlet property="dreamDescriptionLabel" destination="4Qh-nC-9aV" id="vNp-HU-KYM"/>
                                             <outlet property="dreamImageView" destination="3JS-Fe-mZP" id="Vyo-Ya-167"/>
+                                            <outlet property="playerView" destination="che-bF-WGP" id="5dB-ti-RLT"/>
                                             <outlet property="subCategoryLabel" destination="Byk-Cw-FTH" id="AZs-l6-zrd"/>
                                             <outlet property="userImageView" destination="Fbq-4p-KbW" id="nQx-hu-iyW"/>
                                             <outlet property="userNameLabel" destination="qCp-nY-dpE" id="s5r-2p-jL3"/>
@@ -490,7 +498,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MuH-Vx-70i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bGf-bu-e1f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bGf-bu-e1f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -652,7 +660,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4L6-bR-o4P" customClass="ProductViewNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="5n8-4c-JB4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5n8-4c-JB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
