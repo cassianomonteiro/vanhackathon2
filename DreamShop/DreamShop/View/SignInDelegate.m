@@ -41,6 +41,11 @@
     return (self.auth.currentUser && !self.auth.currentUser.isAnonymous);
 }
 
+- (NSURL *)userPhotoURL
+{
+    return self.auth.currentUser.photoURL;
+}
+
 - (void)checkLoginForViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (!self.auth.currentUser) {
@@ -83,6 +88,7 @@
 - (void)authUI:(FIRAuthUI *)authUI didSignInWithUser:(FIRUser *)user error:(NSError *)error
 {
     NSLog(@"%@ id: %@", user.isAnonymous ? @"Anonymous" : @"Signedin", user.uid);
+    NSLog(@"photoURL: %@", user.photoURL);
 }
 
 #pragma mark - Helpers

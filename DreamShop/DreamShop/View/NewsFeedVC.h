@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *loginButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)loginTapped:(UIBarButtonItem *)sender;
 - (IBAction)postTapped:(UIBarButtonItem *)sender;

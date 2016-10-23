@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *productImage;
-@property (weak, nonatomic) IBOutlet UILabel *productTitle;
-@end
-
 @interface SearchProductsVC : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 - (IBAction)cancelTapped:(UIBarButtonItem *)sender;

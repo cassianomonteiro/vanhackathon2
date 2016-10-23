@@ -8,18 +8,14 @@
 
 #import "SearchProductsVC.h"
 #import <Buy/Buy.h>
+#import <UIImageView+AFRKNetworking.h>
+#import "SimpleImageCell.h"
 #import "ProductViewNavigationController.h"
 #import "ProductViewController.h"
-#import <UIImageView+AFRKNetworking.h>
 
 #define SHOP_DOMAIN @"dreamandshop.myshopify.com"
 #define API_KEY @"8ada472409a58bacffb8c054e1770894"
 #define APP_ID @"8"
-
-static NSString *ProductCellID = @"ProductCell";
-
-@implementation ProductCell
-@end
 
 @interface SearchProductsVC () <UISearchResultsUpdating>
 @property (nonatomic, strong) BUYClient *client;
@@ -60,20 +56,20 @@ static NSString *ProductCellID = @"ProductCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProductCell *cell = [tableView dequeueReusableCellWithIdentifier:ProductCellID];
+    SimpleImageCell *cell = [tableView dequeueReusableCellWithIdentifier:[SimpleImageCell cellID]];
     
     if (!cell) {
-        cell = [[ProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ProductCellID];
+        cell = [[SimpleImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[SimpleImageCell cellID]];
     }
     
     BUYProduct *product = self.filteredProducts[indexPath.row];
     
-    cell.productTitle.text = product.title;
-    cell.productImage.image = nil;
+    cell.cellTitle.text = product.title;
+    cell.cellImageView.image = nil;
     
     if (product.images && product.images.count > 0) {
         BUYImageLink *imageLink = product.images.firstObject;
-        [cell.productImage setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize100x100]];
+        [cell.cellImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize100x100]];
     }
     
     return cell;

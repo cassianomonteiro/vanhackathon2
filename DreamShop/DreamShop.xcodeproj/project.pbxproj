@@ -64,6 +64,11 @@
 		F0B974081DBB969F0066632C /* VisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B973FE1DBB969F0066632C /* VisualEffectView.m */; };
 		F0B9740B1DBBE3D90066632C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B974091DBBE3D90066632C /* LaunchScreen.storyboard */; };
 		F0B9740E1DBBF12D0066632C /* SignInDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9740D1DBBF12D0066632C /* SignInDelegate.m */; };
+		F0B974111DBBFBBB0066632C /* SimpleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974101DBBFBBB0066632C /* SimpleImageCell.m */; };
+		F0B974141DBC05A20066632C /* DreamCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974131DBC05A20066632C /* DreamCell.m */; };
+		F0B974181DBC09310066632C /* Dream.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B974171DBC09310066632C /* Dream.m */; };
+		F0B9741B1DBC09860066632C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9741A1DBC09860066632C /* User.m */; };
+		F0B9741E1DBC0A090066632C /* Layer.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B9741D1DBC0A090066632C /* Layer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +193,16 @@
 		F0B9740A1DBBE3D90066632C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0B9740C1DBBF12D0066632C /* SignInDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInDelegate.h; sourceTree = "<group>"; };
 		F0B9740D1DBBF12D0066632C /* SignInDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInDelegate.m; sourceTree = "<group>"; };
+		F0B9740F1DBBFBBB0066632C /* SimpleImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleImageCell.h; sourceTree = "<group>"; };
+		F0B974101DBBFBBB0066632C /* SimpleImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleImageCell.m; sourceTree = "<group>"; };
+		F0B974121DBC05A20066632C /* DreamCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DreamCell.h; sourceTree = "<group>"; };
+		F0B974131DBC05A20066632C /* DreamCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DreamCell.m; sourceTree = "<group>"; };
+		F0B974161DBC09310066632C /* Dream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dream.h; sourceTree = "<group>"; };
+		F0B974171DBC09310066632C /* Dream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dream.m; sourceTree = "<group>"; };
+		F0B974191DBC09860066632C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F0B9741A1DBC09860066632C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F0B9741C1DBC0A090066632C /* Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layer.h; sourceTree = "<group>"; };
+		F0B9741D1DBC0A090066632C /* Layer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layer.m; sourceTree = "<group>"; };
 		F6A0802DA1BB63AB62483499 /* libPods-DreamShopTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DreamShopTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -255,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B9737C1DBB19510066632C /* lib */,
+				F0B974151DBC08EF0066632C /* Model */,
 				F0B973751DBAF6C10066632C /* View */,
 				F0B9734E1DBAF3350066632C /* AppDelegate.h */,
 				F0B9734F1DBAF3350066632C /* AppDelegate.m */,
@@ -291,12 +307,16 @@
 			children = (
 				F0B973791DBB125B0066632C /* AlertControllerFactory.h */,
 				F0B9737A1DBB125B0066632C /* AlertControllerFactory.m */,
+				F0B974121DBC05A20066632C /* DreamCell.h */,
+				F0B974131DBC05A20066632C /* DreamCell.m */,
 				F0B973761DBAF6E80066632C /* NewsFeedVC.h */,
 				F0B973771DBAF6E80066632C /* NewsFeedVC.m */,
 				F0B973861DBB87380066632C /* SearchProductsVC.h */,
 				F0B973871DBB87380066632C /* SearchProductsVC.m */,
 				F0B9740C1DBBF12D0066632C /* SignInDelegate.h */,
 				F0B9740D1DBBF12D0066632C /* SignInDelegate.m */,
+				F0B9740F1DBBFBBB0066632C /* SimpleImageCell.h */,
+				F0B974101DBBFBBB0066632C /* SimpleImageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,6 +467,19 @@
 				F0B973FE1DBB969F0066632C /* VisualEffectView.m */,
 			);
 			path = Appearance;
+			sourceTree = "<group>";
+		};
+		F0B974151DBC08EF0066632C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F0B974161DBC09310066632C /* Dream.h */,
+				F0B974171DBC09310066632C /* Dream.m */,
+				F0B9741C1DBC0A090066632C /* Layer.h */,
+				F0B9741D1DBC0A090066632C /* Layer.m */,
+				F0B974191DBC09860066632C /* User.h */,
+				F0B9741A1DBC09860066632C /* User.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,13 +717,18 @@
 				F0B973E51DBB95C80066632C /* VariantSelectionViewController.m in Sources */,
 				F0B973D01DBB95C70066632C /* GradientView.m in Sources */,
 				F0B973D81DBB95C80066632C /* ProductViewController.m in Sources */,
+				F0B9741B1DBC09860066632C /* User.m in Sources */,
 				F0B973D91DBB95C80066632C /* ProductViewControllerThemeStyleTableViewCell.m in Sources */,
+				F0B974181DBC09310066632C /* Dream.m in Sources */,
+				F0B9741E1DBC0A090066632C /* Layer.m in Sources */,
 				F0B973D21DBB95C70066632C /* HeaderOverlayView.m in Sources */,
 				F0B973E01DBB95C80066632C /* OptionSelectionNavigationController.m in Sources */,
+				F0B974111DBBFBBB0066632C /* SimpleImageCell.m in Sources */,
 				F0B974061DBB969F0066632C /* Theme+Additions.m in Sources */,
 				F0B973CA1DBB95C70066632C /* ActionableFooterView.m in Sources */,
 				F0B973DD1DBB95C80066632C /* ProductViewNavigationController.m in Sources */,
 				F0B973DB1DBB95C80066632C /* ProductViewControllerToggleTableViewCell.m in Sources */,
+				F0B974141DBC05A20066632C /* DreamCell.m in Sources */,
 				F0B973E11DBB95C80066632C /* OptionSelectionViewController.m in Sources */,
 				F0B973E71DBB95C80066632C /* PaymentViewController.m in Sources */,
 				F0B973D61DBB95C70066632C /* ProductVariantCell.m in Sources */,
