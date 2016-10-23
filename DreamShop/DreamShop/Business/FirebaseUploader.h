@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface FirebaseUploader : NSObject
+
++ (void)uploadImage:(UIImage *)image withCompletionHandler:(void (^)(NSURL *imageURL))completionHandler;
 
 @end

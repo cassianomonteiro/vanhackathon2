@@ -11,6 +11,7 @@
 #import <UIImageView+AFRKNetworking.h>
 #import "SearchProductsVC.h"
 #import "AlertControllerFactory.h"
+#import "FirebaseUploader.h"
 #import "Dream.h"
 
 @interface NewDreamVC () <UITextFieldDelegate>
@@ -161,10 +162,22 @@
     [self addProductImageToImageView:self.photoImageView];
 }
 
-- (IBAction)youtubeTapped:(UIButton *)sender {
+- (IBAction)youtubeTapped:(UIButton *)sender
+{
 }
 
-- (IBAction)postTapped:(UIBarButtonItem *)sender {
+- (IBAction)postTapped:(UIBarButtonItem *)sender
+{
+    self.view.userInteractionEnabled = NO;
+    self.view.alpha = 0.3f;
+    [self.activityIndicator startAnimating];
+    
+    [FirebaseUploader uploadImage:self.photoImageView.image withCompletionHandler:^(NSURL *imageURL) {
+        self.view.userInteractionEnabled = YES;
+        self.view.alpha = 1.f;
+        [self.activityIndicator stopAnimating];
+        NSLog(@"%@", imageURL);
+    }];
 }
 
 #pragma mark - <UITextFieldDelegate>
