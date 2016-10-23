@@ -15,4 +15,6 @@
 
 - (IBAction)loginTapped:(UIBarButtonItem *)sender;
 
+- (IBAction)receiveUnwindFromNewDreamCreated:(UIStoryboardSegue *)segue;
+
 @end

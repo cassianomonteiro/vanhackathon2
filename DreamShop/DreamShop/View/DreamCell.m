@@ -58,7 +58,20 @@
         cell.userImageView.image = [factory createImageForIcon:NIKFontAwesomeIconUser];
     }
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:dream.layers.firstObject.layerURL];
+    NSArray<Layer *> *mainLayers = [dream.layers sortedArrayUsingComparator:^NSComparisonResult(Layer  * _Nonnull obj1, Layer   * _Nonnull obj2) {
+        
+        if ([LayerTypePhoto isEqualToString:obj1.type]) {
+            return NSOrderedAscending;
+        }
+        else if ([LayerTypePhoto isEqualToString:obj2.type]) {
+            return NSOrderedDescending;
+        }
+        return NSOrderedSame;
+    }];
+    
+    Layer *layer = mainLayers.firstObject;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:layer.layerURL];
     [cell.dreamImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         cell.dreamImageView.image = [self adjustedImage:image forSize:cell.dreamImageView.frame.size];
         [self checkShopifyIconForDream:dream onImageView:cell.dreamImageView];
@@ -67,7 +80,7 @@
         cell.dreamImageView.image = nil;
     }];
     
-    cell.dreamDescriptionLabel.text = dream.layers.firstObject.layerDescription;
+    cell.dreamDescriptionLabel.text = layer.layerDescription;
     cell.userNameLabel.text = dream.user.name;
     cell.categoryLabel.text = dream.category;
     cell.subCategoryLabel.text = dream.subCategory;

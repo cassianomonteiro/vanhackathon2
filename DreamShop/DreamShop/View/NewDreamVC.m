@@ -12,10 +12,16 @@
 #import "SearchProductsVC.h"
 #import "AlertControllerFactory.h"
 #import "FirebaseUploader.h"
+#import "ConnectionManager.h"
 #import "Dream.h"
 
-@interface NewDreamVC () <UITextFieldDelegate>
+#define unwindAfterCreatingDream @"unwindAfterCreatingDream"
+
+@interface NewDreamVC () <UITextFieldDelegate, ConnectionManagerDelegate>
 @property (nonatomic, strong) BUYProduct *selectedProduct;
+@property (nonatomic, strong) UIImage *selectedPhoto;
+@property (nonatomic, strong) NSURL *uploadedPhotoURL;
+@property (nonatomic, strong) NSMutableArray<Layer *> *layers;
 @end
 
 @implementation NewDreamVC
@@ -27,6 +33,7 @@
     self.userNameLabel.text = self.user.name;
     self.selectedCategory.text = @"";
     self.selectedSubCategory.text = @"";
+    self.layers = [NSMutableArray arrayWithCapacity:3];
     
     [self setUpImages];
     [self setUpCategories];
@@ -48,7 +55,13 @@
 {
     if (!self.photoImageView.image && self.selectedProduct.images && self.selectedProduct.images.count > 0) {
         BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
-        [self.photoImageView setImageWithURL:[imageLink imageURLWithSize:BUYImageURLSize1024x1024]];
+        
+        NSURLRequest *request = [NSURLRequest requestWithURL:[imageLink imageURLWithSize:BUYImageURLSize1024x1024]];
+        
+        [self.photoImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            self.photoImageView.image = image;
+            [self validatePostButtonEnabling];
+        } failure:nil];
     }
     else if (self.photoImageView.image) {
         [self addProductImageToImageView:self.photoImageView];
@@ -70,6 +83,7 @@
         shopifyImageView.image = [UIImage imageNamed:@"shopify-bag"];
         [imageView addSubview:shopifyImageView];
     }
+    [self validatePostButtonEnabling];
 }
 
 - (void)addProductImageToImageView:(UIImageView *)imageView
@@ -88,16 +102,6 @@
         [imageView addSubview:productImageView];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Actions
 
@@ -144,7 +148,7 @@
     [AlertControllerFactory photoSourceAlertControllerForViewController:self
                                                           withImageSize:self.photoImageView.frame.size
                                                       completionHandler:^(UIImage *image) {
-                                                          self.photoImageView.image = image;
+                                                          [self setPhotoImage:image];
                                                           [self addProductImageToImageView:self.photoImageView];
                                                       }];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -156,7 +160,7 @@
     for (UIView *view in self.photoImageView.subviews) {
         [view removeFromSuperview];
     }
-    
+    self.selectedPhoto = image;
     self.photoImageView.image = image;
     [self addShopifyIconToImageView:self.photoImageView];
     [self addProductImageToImageView:self.photoImageView];
@@ -168,16 +172,105 @@
 
 - (IBAction)postTapped:(UIBarButtonItem *)sender
 {
-    self.view.userInteractionEnabled = NO;
-    self.view.alpha = 0.3f;
-    [self.activityIndicator startAnimating];
+    [self startProgressAnimation];
     
-    [FirebaseUploader uploadImage:self.photoImageView.image withCompletionHandler:^(NSURL *imageURL) {
+    if (!self.selectedPhoto) {
+        [self requestDreamCreation];
+    }
+    else {
+        [FirebaseUploader uploadImage:self.photoImageView.image withCompletionHandler:^(NSURL *imageURL) {
+            
+            if (!imageURL) {
+                [self stopProgressAnimation];
+            }
+            else {
+                self.uploadedPhotoURL = imageURL;
+                [self requestDreamCreation];
+            }
+        }];
+    }
+}
+
+- (void)startProgressAnimation
+{
+    self.view.userInteractionEnabled = NO;
+    self.view.alpha = 0.7f;
+    [self.activityIndicator startAnimating];
+}
+
+- (void)stopProgressAnimation
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
         self.view.userInteractionEnabled = YES;
         self.view.alpha = 1.f;
         [self.activityIndicator stopAnimating];
-        NSLog(@"%@", imageURL);
-    }];
+    });
+}
+
+- (void)requestDreamCreation
+{
+    Dream *dream = [[Dream alloc] init];
+    dream.user = self.user;
+    dream.category = self.selectedCategory.text;
+    dream.subCategory = self.selectedSubCategory.text;
+    [[ConnectionManager defaultManager] requestDreamCreation:dream forDelegate:self];
+}
+
+- (void)prepareLayersToRequestCreationFromDream:(Dream *)dream
+{
+    if (self.selectedPhoto) {
+        Layer *layer = [[Layer alloc] init];
+        layer.dream = dream;
+        layer.type = LayerTypePhoto;
+        layer.layerDescription = self.dreamTextField.text;
+        layer.layerURL = self.uploadedPhotoURL;
+        [self.layers addObject:layer];
+    }
+    
+    if (self.selectedProduct) {
+        BUYImageLink *imageLink = self.selectedProduct.images.firstObject;
+        Layer *layer = [[Layer alloc] init];
+        layer.dream = dream;
+        layer.type = LayerTypeProduct;
+        layer.layerDescription = [NSString stringWithFormat:@"%@ %@", self.selectedProduct.vendor, self.selectedProduct.title];
+        layer.productId = self.selectedProduct.identifier;
+        layer.layerURL = [imageLink imageURLWithSize:BUYImageURLSize1024x1024];
+        [self.layers addObject:layer];
+    }
+}
+
+#pragma mark - <ConnectionManagerDelegate>
+
+- (void)connectionManager:(ConnectionManager *)manager didCompleteRequestWithReturnedObjects:(NSArray *)objects
+{
+    if (objects && objects.count == 1 && [objects.firstObject isKindOfClass:[Dream class]]) {
+        [self prepareLayersToRequestCreationFromDream:objects.firstObject];
+        [self requestNextLayerCreation];
+    }
+    else if (objects && objects.count > 0 && [objects.firstObject isKindOfClass:[Layer class]]) {
+        [self requestNextLayerCreation];
+    }
+    else {
+        [self connectionManager:manager didFailRequestWithError:nil];
+    }
+}
+
+- (void)requestNextLayerCreation
+{
+    if (self.layers.count > 0) {
+        Layer *layer = self.layers.firstObject;
+        [self.layers removeObject:layer];
+        [[ConnectionManager defaultManager] requestLayerCreation:layer forDelegate:self];
+    }
+    else {
+        [self stopProgressAnimation];
+        [self performSegueWithIdentifier:unwindAfterCreatingDream sender:self];
+    }
+}
+
+- (void)connectionManager:(ConnectionManager *)manager didFailRequestWithError:(NSError *)error
+{
+    [self stopProgressAnimation];
 }
 
 #pragma mark - <UITextFieldDelegate>
@@ -242,9 +335,12 @@
 
 - (void)validatePostButtonEnabling
 {
-    self.postButton.enabled = ![self.dreamTextField.text isEqualToString:@""] &&
-                                ![self.selectedCategory.text isEqualToString:@""] &&
-                                ![self.selectedSubCategory.text isEqualToString:@""];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.postButton.enabled = ![self.dreamTextField.text isEqualToString:@""] &&
+                                    ![self.selectedCategory.text isEqualToString:@""] &&
+                                    ![self.selectedSubCategory.text isEqualToString:@""] &&
+                                    self.photoImageView.image;
+    });
 }
 
 - (NSArray<NSString *> *)categoriesNames

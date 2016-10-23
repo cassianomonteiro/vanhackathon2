@@ -89,6 +89,11 @@
     [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:NO];
 }
 
+- (void)receiveUnwindFromNewDreamCreated:(UIStoryboardSegue *)segue
+{
+    [self loadDreams];
+}
+
 #pragma mark - Actions
 
 - (IBAction)loginTapped:(UIBarButtonItem *)sender
